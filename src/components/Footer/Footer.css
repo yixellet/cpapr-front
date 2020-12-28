@@ -1,0 +1,17 @@
+@import url('__content/footer__content.css');
+@import url('__cgt/footer__cgt.css');
+@import url('__logo/footer__logo.css');
+@import url('__name/footer__name.css');
+@import url('__contacts/footer__contacts.css');
+
+.footer {
+  background-color: #07141c;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: calc(1146px + 30px)) {
+  .footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

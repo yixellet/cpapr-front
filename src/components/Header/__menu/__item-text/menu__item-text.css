@@ -1,0 +1,16 @@
+@import url('menu__item-text_span.css');
+
+.menu__item-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .menu > .menu__list > .menu__item > .menu__list > .menu__item > .menu__item-link > .menu__item-text {
+        text-align: right;
+    }
+}

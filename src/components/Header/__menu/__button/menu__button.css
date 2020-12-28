@@ -1,0 +1,15 @@
+.menu__button {
+    display: none;
+    background-image: url('../../../../images/menu__button.svg');
+    background-size: contain;
+    background-color: rgba(255,255,255,0);
+    border-style: none;
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .menu__button {
+        display: block;
+    }
+}

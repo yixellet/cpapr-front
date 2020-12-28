@@ -1,0 +1,10 @@
+.header {
+  background-color: #07141c;
+}
+
+@media screen and (max-width: calc(1146px + 30px)) {
+  .header {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
