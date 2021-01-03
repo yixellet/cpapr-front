@@ -10,7 +10,7 @@ class MenuItem extends React.Component {
     return (
       <Link className="menu__item-link" to={this.props.link}>
         <p className="menu__item-text">{this.props.name}
-        {this.props.sub === true ? <span className="menu__item-text_span">▼</span> : ''}</p>
+        {this.props.sub === true ? <span className="menu__item-text_span">&#9660;</span> : ''}</p>
       </Link>
     )
   }
