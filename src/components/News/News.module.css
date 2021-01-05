@@ -17,7 +17,7 @@
   position: relative;
 }
 
-@media screen and (min-width: calc(1146px + 30px)) {
+@media screen and (min-width: calc(1147px + 30px)) {
   .content {
     max-width: 1086px;
   }

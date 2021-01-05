@@ -8,7 +8,7 @@ class NewsList extends React.Component {
     return (
       <ul className={classes.newslist}>
         {this.props.newsArray.map((item) => {
-          return <NewsItem image={item.image} title={item.title} content={item.content} date={item.date_publisher} />
+          return <NewsItem image={item.image} title={item.title} content={item.text} date={item.date_publisher} key={item.id}/>
         })}
       </ul>
     )
