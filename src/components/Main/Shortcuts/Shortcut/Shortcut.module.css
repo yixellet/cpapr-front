@@ -1,0 +1,63 @@
+.shortcut {
+  width: calc((100% - 30px)/2);
+  height: 200px;
+  list-style-type: none;
+}
+
+.shortcut:nth-of-type(1),
+.shortcut:nth-of-type(2) {
+  margin-bottom: 30px;
+}
+
+.shortcut__link {
+  background-color: #6db0dabe;
+  text-decoration: none;
+  color: black;
+  font-family: "Roboto Condensed";
+  font-size: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shortcut__text {
+  margin: 0;
+}
+
+@media screen and (max-width: calc(1146px + 30px)) {
+  .shortcut {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 834px) {
+  .shortcut {
+    width: calc((100% - 20px)/2);
+    margin-bottom: 35px;
+  }
+
+  .shortcut:nth-of-type(1),
+  .shortcut:nth-of-type(2) {
+    margin-bottom: 20px;
+  }
+
+}
+
+@media screen and (max-width: 645px) {
+  .shortcut {
+    width: 100%;
+  }
+
+  .shortcut:nth-of-type(1),
+  .shortcut:nth-of-type(2),
+  .shortcut:nth-of-type(3),
+  .shortcut:nth-of-type(4) {
+    margin-bottom: 20px;
+  }
+}

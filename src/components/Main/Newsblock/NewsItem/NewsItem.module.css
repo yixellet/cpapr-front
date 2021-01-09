@@ -1,0 +1,21 @@
+.item {
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+
+.link {
+  font-family: 'Roboto';
+  text-decoration: none;
+  color: #fff;
+  outline: none;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.date {
+  font-size: 12px;
+}

@@ -11,8 +11,10 @@ class Main extends React.Component {
       <main className={styles.background}>
         <div className={styles.content}>
           <Lead content={this.props.mainPageContent.lead}/>
-          {/* <Shortcuts content={this.props.mainPageContent.shortcuts} /> */}
-          {/* <Newsblock newsArray={this.props.news.slice(0,4)}/> */}
+          <div className={styles.links__block}>
+            <Shortcuts content={this.props.mainPageContent.shortcuts} />
+            <Newsblock newsArray={this.props.news.slice(0,4)}/>
+          </div>
         </div>
       </main>
     )

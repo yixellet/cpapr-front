@@ -7,8 +7,8 @@ class Shortcuts extends React.Component {
 
   render() {
     return (
-      <section className={styles.shortcuts}>
-        <ul>
+      <section className={styles.section}>
+        <ul className={styles.shortcuts}>
           {this.props.content.map((item) => {
             return <Shortcut name={item.name} link={item.link} key={item.id}/>
           })}

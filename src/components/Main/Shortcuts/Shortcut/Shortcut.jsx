@@ -8,7 +8,7 @@ class Shortcut extends React.Component {
   render() {
     return (
       <li className={styles.shortcut}>
-          <Link to={this.props.link}><p>{this.props.name}</p></Link>
+          <Link to={this.props.link} className={styles.shortcut__link}><p className={styles.shortcut__text}>{this.props.name}</p></Link>
       </li>
     )
   }

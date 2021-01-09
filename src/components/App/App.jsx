@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import News from '../News/News';
+import New from '../News/New/New';
 import Documents from '../Documents/Documents';
 import OrgDocs from '../Documents/OrgDocs/OrgDocs';
 import RegDocs from '../Documents/RegDocs/RegDocs';
@@ -34,8 +35,11 @@ class App extends React.Component {
           <Route exact path="/">
             <Main mainPageContent={mainPageContent} news={news.results}/>
           </Route>
-          <Route path="/news">
-            <News />
+          <Route exact path="/news">
+            <News news={news.results} />
+          </Route>
+          <Route path="/news/:id">
+            <New content={news.results} />
           </Route>
           <Route exact path="/docs">
             <Documents />
