@@ -1,6 +1,12 @@
 const menu = {
   menu: [
     {
+      id: 6,
+      name: 'Главная', 
+      link: '/', 
+      sub: null
+    },
+    {
       id: 1,
       name: 'Новости', 
       link: '/news', 

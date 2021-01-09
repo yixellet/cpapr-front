@@ -13,3 +13,10 @@
       display: block;
   }
 }
+
+@media screen and (max-width: 680px) {
+  .menu__button {
+    width: 25px;
+    height: 25px;
+  }
+}

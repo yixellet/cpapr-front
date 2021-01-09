@@ -1,0 +1,63 @@
+.lead {
+  max-width: 1146px;
+  height: 300px;
+  opacity: 10;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin: 0 auto 0;
+  padding: 0;
+  background-position: left 50% top 58%;
+  background-size: cover;
+}
+
+.maintitle {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 48px;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  margin: 10px;
+  color: #fff;
+}
+
+@media screen and (max-width: 680px) {
+  .lead {
+    height: 250px;
+    background-position: left 50% top 70%;
+  }
+
+  .maintitle {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .lead {
+    height: 200px;
+    background-position: left 50% top 70%;
+  }
+
+  .maintitle {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .lead {
+    height: 180px;
+    background-size: auto;
+    background-position: left 70% top 72%;
+  }
+
+  .maintitle {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .lead {
+    height: 170px;
+  }
+}

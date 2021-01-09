@@ -18,9 +18,11 @@ import Contacts from '../Contacts/Contacts';
 import About from '../About/About';
 import History from '../About/History/History';
 import Structure from '../About/Structure/Structure';
+import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
 import menu from '../../content/menu';
-import './App.css';
+import mainPageContent from '../../content/mainPage';
+import news from '../../content/news';
 
 class App extends React.Component {
 
@@ -30,7 +32,7 @@ class App extends React.Component {
         <Header structure={menu.menu}/>
         <Switch>
           <Route exact path="/">
-            <Main />
+            <Main mainPageContent={mainPageContent} news={news.results}/>
           </Route>
           <Route path="/news">
             <News />
@@ -79,6 +81,9 @@ class App extends React.Component {
           </Route>
           <Route path="/about/structure">
             <Structure />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
           </Route>
         </Switch>
         <Footer />

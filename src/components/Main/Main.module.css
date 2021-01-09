@@ -1,0 +1,12 @@
+.background {
+  min-height: calc(100vh - 80px - 80px);
+  margin: 0;
+  padding: 0;
+  background-color: #07141c;
+}
+
+.content {
+  max-width: 1146px;
+  margin: 0 auto;
+  position: relative;
+}
