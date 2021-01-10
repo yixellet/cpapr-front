@@ -17,13 +17,13 @@ class NewsItem extends React.Component {
   render() {
     return (
       <li className={classes.newsitem}>
-      <img className={classes.newsitem__image} alt="illustration" src={this.props.image}/>
-      <div className={classes.newsitem__text}>
-        <h3 className={classes.newsitem__title}>{this.props.title}</h3>
-        <p className={classes.newsitem__content}>{this.cutText(this.props.content,300)}</p>
-        <Link to="newsitem.html" className={classes.newsitem__readmore}>Читать далее</Link>
-      </div>
-    </li>
+        <img className={classes.newsitem__image} alt="illustration" src={this.props.image}/>
+        <div className={classes.newsitem__text}>
+          <h3 className={classes.newsitem__title}>{this.props.title}</h3>
+          <p className={classes.newsitem__content}>{this.cutText(this.props.content,300)}</p>
+          <Link to={this.props.path} className={classes.newsitem__readmore}>Читать далее</Link>
+        </div>
+      </li>
     )
   }
 }

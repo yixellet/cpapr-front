@@ -14,3 +14,27 @@
 .links__block {
   display: flex;
 }
+
+@media screen and (max-width: calc(1146px + 30px)) {
+  .content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .links__block {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 442px) {
+  .content {
+    padding: 0;
+  }
+
+  .links__block {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

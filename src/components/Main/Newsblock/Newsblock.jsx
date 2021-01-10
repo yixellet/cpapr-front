@@ -8,7 +8,7 @@ class Newsblock extends React.Component {
 
   render() {
     return (
-      <section className={styles.news}>
+      <section className={styles.section}>
         <Link to='/news' className={styles.title}>Новости</Link>
         <ul className={styles.newslist}>
           {this.props.newsArray.map((item) => {
