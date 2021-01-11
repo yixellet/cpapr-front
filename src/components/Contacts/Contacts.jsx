@@ -35,7 +35,7 @@ class Contacts extends React.Component {
             </tr>
             <tr className={styles.table__row}>
               <th className={styles.table__accent}>Время работы:</th>
-              <td className={styles.table__cell}><p className={styles.table__text}>пн - пт с 8:30 до 17:30, обед с 12:00 до 13:00, сб, вс - выходной</p></td>
+              <td className={styles.table__cell}><p className={styles.table__text}>пн-пт с 8:30 до 17:30, обед с 12:00 до 13:00, сб-вс - выходной</p></td>
             </tr>
           </tbody>
         </table>

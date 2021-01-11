@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import PageTitle from '../PageTitle/PageTitle';
 import SideMenu from '../SideMenu/SideMenu';
 
 import docs from '../../content/documents';
 
-import styles from './Documents.module.css';
+import meinBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
+import documentsStyles from './Documents.module.css';
 
 class Documents extends React.Component {
   constructor(props) {
@@ -38,17 +40,19 @@ class Documents extends React.Component {
 
   render() {
     return (
-      <main className={styles.background}>
-        <section className={styles.content}>
+      <main className={meinBlockStyles.background}>
+        <section className={meinBlockStyles.content}>
           <PageTitle name="Документы"/>
-          <SideMenu list={this.getUniqueValues(docs)}/>
-          <ul className={styles.list}>
-            {
-              this.chooseDocType().map((item) => {
-                return (<li>{item}</li>)
-              })
-            }
-          </ul>
+          <div className={documentsStyles.body}>
+            <SideMenu list={this.getUniqueValues(docs)}/>
+            <ul className={documentsStyles.list}>
+              {
+                this.chooseDocType().map((doc) => {
+                  return (<li><Link target="blank" to={doc.doc_file}>{doc.name}</Link></li>)
+                })
+              }
+            </ul>
+          </div>
         </section>
       </main>
     )

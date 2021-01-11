@@ -6,18 +6,19 @@
 }
 
 .content {
-min-height: 100vh;
-background: #fff;
-margin-left: auto;
-margin-right: auto;
-padding-top: 30px;
-padding-bottom: 100px;
-padding-left: 30px;
-padding-right: 30px;
-position: relative;
-border-radius: 10px;
-box-shadow: 5px 5px 10px #4e697a;
+  min-height: calc(100vh - 350px);
+  background: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #4e697a;
 }
+
 
 @media screen and (min-width: calc(1147px + 30px)) {
 .content {
