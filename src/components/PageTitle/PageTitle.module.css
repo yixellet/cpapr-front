@@ -9,13 +9,27 @@
     width: 754px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 1050px) {
     .pageTitle {
-        margin-bottom: 20px;
+        margin-left: 117px;
+        width: auto;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
+    .pageTitle {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .pageTitle {
+        font-size: 27px;
+    }
+}
+
+@media screen and (max-width: 375px) {
     .pageTitle {
         margin-bottom: 20px;
         font-size: 25px;

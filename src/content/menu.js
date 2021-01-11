@@ -16,11 +16,7 @@ const menu = {
       id: 2,
       name: 'Документы', 
       link: '/docs', 
-      sub: [
-        {id: 21, name: 'Учредительные документы', link: '/docs/organisational', sub: null},
-        {id: 22, name: 'Нормативные документы', link: '/docs/regulatory', sub: null},
-        {id: 23, name: 'Для заявителей', link: '/docs/for-clients', sub: null}
-      ]
+      sub: null
     },
     {
       id: 3,

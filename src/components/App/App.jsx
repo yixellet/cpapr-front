@@ -5,9 +5,6 @@ import Main from '../Main/Main';
 import News from '../News/News';
 import New from '../News/New/New';
 import Documents from '../Documents/Documents';
-import OrgDocs from '../Documents/OrgDocs/OrgDocs';
-import RegDocs from '../Documents/RegDocs/RegDocs';
-import ForClients from '../Documents/ForClients/ForClients';
 import Work from '../Work/Work';
 import Databases from '../Work/Databases/Databases';
 import Rfpd from '../Work/Rfpd/Rfpd';
@@ -41,17 +38,8 @@ class App extends React.Component {
           <Route path="/news/:id">
             <New content={news.results} />
           </Route>
-          <Route exact path="/docs">
+          <Route path="/docs">
             <Documents />
-          </Route>
-          <Route path="/docs/organisational">
-            <OrgDocs />
-          </Route>
-          <Route path="/docs/regulatory">
-            <RegDocs />
-          </Route>
-          <Route path="/docs/for-clients">
-            <ForClients />
           </Route>
           <Route exact path="/work">
             <Work />
