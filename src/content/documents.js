@@ -1,5 +1,6 @@
 const documents = [
   {
+    id: "0",
     doc_file:
       "http://127.0.0.1:8000/media/documents/1.%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BE%D0%B4%D0%B5%D0%BA%D1%81_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%93%D0%9A_%D0%A0%D0%A4_%D1%87.4_%D0%BE%D1%82_08.12.2006.doc",
     type_file: "Нормативные документы",
@@ -8,6 +9,7 @@ const documents = [
     url: "",
   },
   {
+    id: "1",
     doc_file:
       "http://127.0.0.1:8000/media/documents/2.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_30.12.2015_N_431-%D0%A4%D0%97_%D0%9E_%D0%B3%D0%B5%D0%BE%D0%B4%D0%B5%D0%B7%D0%B8%D0%B8_%D0%BA%D0%B0%D1%80%D1%82%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%B8_%D0%B8_%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%82_RlUNckc.rtf",
     type_file: "Нормативные документы",
@@ -16,6 +18,7 @@ const documents = [
     url: "",
   },
   {
+    id: "2",
     doc_file:
       "http://127.0.0.1:8000/media/documents/3.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_13.07.2015_%D0%B3.__215-%D0%A4%D0%97_.pdf",
     type_file: "Нормативные документы",
@@ -24,6 +27,7 @@ const documents = [
     url: "",
   },
   {
+    id: "3",
     doc_file:
       "http://127.0.0.1:8000/media/documents/4.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_30.10.2018_%D0%B3._N_386-%D0%A4%D0%97.pdf",
     type_file: "Нормативные документы",
@@ -32,6 +36,7 @@ const documents = [
     url: "",
   },
   {
+    id: "4",
     doc_file:
       "http://127.0.0.1:8000/media/documents/5.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_27.07.2006_%D0%B3._N_149-%D0%A4%D0%97.pdf",
     type_file: "Нормативные документы",
@@ -40,6 +45,7 @@ const documents = [
     url: "",
   },
   {
+    id: "5",
     doc_file:
       "http://127.0.0.1:8000/media/documents/6.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_14.02.2009_%D0%B3_22_%D0%A4%D0%97.doc",
     type_file: "Нормативные документы",
@@ -48,6 +54,7 @@ const documents = [
     url: "",
   },
   {
+    id: "6",
     doc_file:
       "http://127.0.0.1:8000/media/documents/7.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_06.04.2011__68-%D0%A4%D0%97_.doc",
     type_file: "Нормативные документы",
@@ -56,6 +63,7 @@ const documents = [
     url: "",
   },
   {
+    id: "7",
     doc_file:
       "http://127.0.0.1:8000/media/documents/8.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_21.07.2014__223-%D0%A4%D0%97.pdf",
     type_file: "Нормативные документы",
@@ -64,6 +72,7 @@ const documents = [
     url: "",
   },
   {
+    id: "8",
     doc_file:
       "http://127.0.0.1:8000/media/documents/9.%D0%97%D0%B0%D0%BA%D0%BE%D0%BD_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_20.08.1993_%D0%B3.__5663-1.pdf",
     type_file: "Нормативные документы",
@@ -73,6 +82,7 @@ const documents = [
     url: "",
   },
   {
+    id: "9",
     doc_file:
       "http://127.0.0.1:8000/media/documents/10.%D0%97%D0%B0%D0%BA%D0%BE%D0%BD_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_21.07.1993_%D0%B3.__5485-1_.pdf",
     type_file: "Нормативные документы",
@@ -82,6 +92,7 @@ const documents = [
     url: "",
   },
   {
+    id: "10",
     doc_file:
       "http://127.0.0.1:8000/media/documents/1.%D0%A3%D0%BA%D0%B0%D0%B7_%D0%9F%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_17.05.2007_%D0%B3.__638_.pdf",
     type_file: "Нормативные документы",
@@ -91,6 +102,7 @@ const documents = [
     url: "",
   },
   {
+    id: "11",
     doc_file: "http://127.0.0.1:8000/media/documents/2TAKJXA.DOC",
     type_file: "Нормативные документы",
     subtype: "Федеральный",
@@ -99,6 +111,7 @@ const documents = [
     url: "",
   },
   {
+    id: "12",
     doc_file:
       "http://127.0.0.1:8000/media/documents/1.%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_16_%D0%BD%D0%BE%D1%8F%D0%B1%D1%80%D1%8F_2015_%D0%B3.__1236_.doc",
     type_file: "Нормативные документы",
@@ -108,6 +121,7 @@ const documents = [
     url: "",
   },
   {
+    id: "13",
     doc_file:
       "http://127.0.0.1:8000/media/documents/2.%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_04.03.2017_262.pdf",
     type_file: "Нормативные документы",
@@ -117,6 +131,7 @@ const documents = [
     url: "",
   },
   {
+    id: "14",
     doc_file:
       "http://127.0.0.1:8000/media/documents/3.%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_09.02.2017__159.pdf",
     type_file: "Нормативные документы",
@@ -126,6 +141,7 @@ const documents = [
     url: "",
   },
   {
+    id: "15",
     doc_file:
       "http://127.0.0.1:8000/media/documents/4.%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8_%D0%BE%D1%82_15.03.2017__299_.pdf",
     type_file: "Нормативные документы",

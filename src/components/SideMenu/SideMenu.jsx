@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 import styles from './SideMenu.module.css';
 
@@ -8,7 +7,13 @@ class SideMenu extends React.Component {
     return (
       <div className={styles.side_menu}>
         <button className={styles.button}/>
-        <ul className={styles.list}>'eeee'</ul>
+        <ul className={styles.list}>
+          {
+            this.props.list.map((item) => {
+              return (<li className={styles.item} key={item}>{item}</li>)
+            })
+          }
+        </ul>
       </div>
     )
   }
