@@ -1,57 +1,48 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import PageTitle from '../PageTitle/PageTitle';
 import SideMenu from '../SideMenu/SideMenu';
+import DocumentsList from './DocumentsList/DocumentsList';
 
-import docs from '../../content/documents';
-
-import meinBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
+import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 import documentsStyles from './Documents.module.css';
 
 class Documents extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.documentTypes = this.getUniqueValues(this.props.docList);
 
     this.state = {
-      docType: 'org'
+      activeDocumentType: this.documentTypes[0],
     }
 
-    this.chooseDocType = this.chooseDocType.bind(this);
+    this.handleChangeDocType = this.handleChangeDocType.bind(this);
+  }
+
+  handleChangeDocType(activeDocType) {
+    this.setState({docType: activeDocType})
+    console.log(this.state);
   }
 
   getUniqueValues(arr) {
     let result = [];
-
     for (let obj of arr) {
-      if (!result.includes(obj.type_file)) {
-        result.push(obj.type_file)
+      if (!result.includes(obj.typeName)) {
+        result.push(obj.typeName)
       }
     }
-
     return result;
-  }
-
-  chooseDocType() {
-    return docs.filter((doc) => {
-      return (doc.type_file === 'Учредительные документы')
-    })
   }
 
   render() {
     return (
-      <main className={meinBlockStyles.background}>
-        <section className={meinBlockStyles.content}>
-          <PageTitle name="Документы"/>
+      <main className={mainBlockStyles.background}>
+        <section className={mainBlockStyles.content}>
+          <PageTitle name="Документы" />
           <div className={documentsStyles.body}>
-            <SideMenu list={this.getUniqueValues(docs)}/>
-            <ul className={documentsStyles.list}>
-              {
-                this.chooseDocType().map((doc) => {
-                  return (<li><Link target="blank" to={doc.doc_file}>{doc.name}</Link></li>)
-                })
-              }
-            </ul>
+            <SideMenu handleClick={this.handleChangeDocType} list={this.documentTypes} activeDocumentType={this.state.activeDocumentType} />
+            <DocumentsList list={this.props.docList} />
           </div>
         </section>
       </main>

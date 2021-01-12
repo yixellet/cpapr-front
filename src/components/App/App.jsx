@@ -21,6 +21,7 @@ import Footer from '../Footer/Footer';
 import menu from '../../content/menu';
 import mainPageContent from '../../content/mainPage';
 import news from '../../content/news';
+import docs from '../../content/documents';
 
 class App extends React.Component {
 
@@ -39,7 +40,7 @@ class App extends React.Component {
             <New content={news.results} />
           </Route>
           <Route path="/docs">
-            <Documents />
+            <Documents docList={docs}/>
           </Route>
           <Route exact path="/work">
             <Work />

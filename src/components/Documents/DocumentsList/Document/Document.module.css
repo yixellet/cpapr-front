@@ -1,0 +1,18 @@
+.item {
+  margin-bottom: 30px;
+}
+
+.link {
+  font-family: Roboto;
+  line-height: 1.5;
+  text-decoration: none;
+  color: #0A5992;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: rgb(97, 179, 238);
+}

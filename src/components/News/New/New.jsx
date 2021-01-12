@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Arrows from './Arrows/Arrows';
 import PageTitle from '../../PageTitle/PageTitle';
 
-import classes from './New.module.css';
+import mainBlockStyles from '../../CommonMainBlock/CommonMainBlock.module.css';
 
 function New(props) {
   const ids = useParams().id;
@@ -15,8 +15,8 @@ function New(props) {
   const nextItem = news.indexOf(newsItem) - 1
 
   return (
-    <main className={classes.background}>
-      <section className={classes.content}>
+    <main className={mainBlockStyles.background}>
+      <section className={mainBlockStyles.content}>
         <Arrows linkToPrev={`${news[prevItem].id}`} linkToNext={`${news[nextItem].id}`}/>
         <PageTitle name={newsItem.title}/>
         <p>{newsItem.text}</p>

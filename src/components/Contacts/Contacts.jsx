@@ -1,13 +1,14 @@
 import React from "react";
 import PageTitle from '../PageTitle/PageTitle';
 
+import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 import styles from './Contacts.module.css';
 
 class Contacts extends React.Component {
   render() {
     return (
-      <main className={styles.background}>
-        <section className={styles.content}>
+      <main className={mainBlockStyles.background}>
+        <section className={mainBlockStyles.content}>
         <PageTitle name="Контакты"/>
         <iframe title="map" className={styles.map} src="https://yandex.ru/map-widget/v1/?um=constructor%3A1c5c3ba3f9a4fce778a6de2c3c46667b38fdd26c985d98a4ba94527b5be8b4e3&amp;source=constructor" frameBorder="0"></iframe>
         <table className={styles.table}>
@@ -22,7 +23,7 @@ class Contacts extends React.Component {
                 <p className={styles.table__text}>8 (8512) 66-74-00 - директор</p>
                 <p className={styles.table__text}>8 (8512) 66-74-60 - приемная</p>
                 <p className={styles.table__text}>8 (8512) 66-74-56 - бухгалтерия</p>
-                <p className={styles.table__text}>8 (8512) 66-74-62 - юрист</p>
+                <p className={styles.table__text}>8 (8512) 66-74-62 - юридический отдел</p>
                 <p className={styles.table__text}>8 (8512) 66-74-61 - отдел пространственных данных</p>
                 <p className={styles.table__text}>8 (8512) 66-74-57 - отдел геоинформационных систем и IT-технологий</p>
                 <p className={styles.table__text}>8 (8512) 66-74-58 - отдел геоинформационных систем и IT-технологий</p>

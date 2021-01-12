@@ -1,11 +1,51 @@
 .side_menu {
-  min-width: 300px;
-  background-color: aquamarine;
+  width: 30%;
   margin-right: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.button {
+  display: none;
 }
 
 .list {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+@media screen and (max-width: 768px) {
+  .side_menu {
+    position: absolute;
+    left: -15px;
+    top: -40px;
+    min-width: 280px;
+    min-height: 200px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 5px 5px 10px #4e697a;
+  }
+
+  .button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    background-color: #4f83a8;
+    background-image: url('../../images/menu__button.svg');
+    background-size: 20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .list {
+    margin: 15px;
+  }
+
+  .button {
+    display: block;
+  }
 }

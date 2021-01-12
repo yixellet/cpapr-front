@@ -1,0 +1,18 @@
+.sidemenu__item {
+  font-family: Roboto;
+  line-height: 1.5;
+  text-decoration: none;
+  color: #0A5992;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.sidemenu__item_active {
+  font-weight: 700;
+}
+
+.sidemenu__item:hover {
+  color: rgb(97, 179, 238);
+}
