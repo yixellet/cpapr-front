@@ -1,22 +1,24 @@
 import React from "react";
 
 import PageTitle from '../PageTitle/PageTitle';
-import SideMenu from '../SideMenu/SideMenu';
+import SideMenuItem from '../SideMenu/SideMenuItem/SideMenuItem';
 import DocumentsList from './DocumentsList/DocumentsList';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
+import sideMenuStyles from '../SideMenu/SideMenu.module.css';
 import documentsStyles from './Documents.module.css';
 
 class  Documents extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handleChangeDocType = this.handleChangeDocType.bind(this);
+    this.handleSideMenuOpenOrClose = this.handleSideMenuOpenOrClose.bind(this);
     this.getUniqueValues = this.getUniqueValues.bind(this);
     this.documentTypes = this.getUniqueValues(this.props.docList);
 
     this.state = {
-      activeDocumentType: this.documentTypes[0]
+      activeDocumentType: this.documentTypes[0],
+      isMenuOpen: false
     }
   }
 
@@ -40,8 +42,12 @@ class  Documents extends React.Component {
   }
 
   handleChangeDocType(docType) {
-    this.setState({ activeDocumentType: docType })
-    console.log(docType)
+    this.setState({ activeDocumentType: docType, isMenuOpen: false })
+  }
+
+  handleSideMenuOpenOrClose() {
+    const { isMenuOpen } = this.state;
+    this.setState({ isMenuOpen: !isMenuOpen });
   }
 
   render() {
@@ -50,7 +56,16 @@ class  Documents extends React.Component {
         <section className={mainBlockStyles.content}>
           <PageTitle name="Документы" />
           <div className={documentsStyles.body}>
-            <SideMenu list={this.documentTypes} activeDocumentType={this.state.activeDocumentType.link} onMenuItemClick={this.handleChangeDocType} />
+            <div className={this.state.isMenuOpen ? `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_open}` : `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_closed}`}>
+              <button onClick={this.handleSideMenuOpenOrClose} className={sideMenuStyles.button}/>
+              <ul className={sideMenuStyles.list}>
+                {
+                  this.documentTypes.map((item) => {
+                    return (<SideMenuItem onItemClick={this.handleChangeDocType.bind(this, item)} key={item.link} content={item} isActive={item === this.state.activeDocumentType} />)
+                  })
+                }
+              </ul>
+            </div>
             <DocumentsList list={this.chooseDocumentType(this.state.activeDocumentType.link)} />
           </div>
         </section>
