@@ -3,16 +3,16 @@ import PageTitle from '../PageTitle/PageTitle';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 
-class About extends React.Component {
+class Work extends React.Component {
   render() {
     return (
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>
-        <PageTitle name="О нас"/>
+        <PageTitle name="Деятельность"/>
         </section>
       </main>
     )
   }
 }
 
-export default About;
+export default Work;
