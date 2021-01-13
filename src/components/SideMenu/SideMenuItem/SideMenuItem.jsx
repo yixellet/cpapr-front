@@ -1,17 +1,16 @@
 import React from "react";
 
-import './SideMenuItem.css';
+import styles from './SideMenuItem.module.css';
 
-class MenuItem extends React.Component {
+class SideMenuItem extends React.Component {
 
   render() {
-    const { name, isActive } = this.props;
     return (
-      <li className={isActive ? 'sidemenu__item sidemenu__item_active' : 'sidemenu__item'}>
-          {name}
+      <li onClick={this.props.onItemClick} className={this.props.isActive ? `${styles.item} ${styles.item_active}` : styles.item}>
+          {this.props.content.name}
       </li>
     )
   }
 }
 
-export default MenuItem;
+export default SideMenuItem;

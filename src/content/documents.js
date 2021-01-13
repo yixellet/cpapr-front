@@ -50,6 +50,7 @@ const documents = [
     link:
       "http://127.0.0.1:8000/media/documents/6.%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD_%D0%BE%D1%82_14.02.2009_%D0%B3_22_%D0%A4%D0%97.doc",
     typeName: "Для заявителей",
+    type: 'cli',
     subtype: null,
     name: "Для заявителей 1",
   },

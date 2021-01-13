@@ -17,12 +17,19 @@
 @media screen and (max-width: 768px) {
   .side_menu {
     position: absolute;
-    left: -15px;
-    top: -40px;
+    top: -60px;
     min-width: 280px;
     min-height: 200px;
     border-bottom-right-radius: 10px;
+  }
+
+  .side_menu_open {
+    left: -15px;
     box-shadow: 5px 5px 10px #4e697a;
+  }
+
+  .side_menu_closed {
+    left: -295px;
   }
 
   .button {
