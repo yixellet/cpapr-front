@@ -18,7 +18,8 @@ class  Documents extends React.Component {
 
     this.state = {
       activeDocumentType: this.documentTypes[0],
-      isMenuOpen: false
+      isMenuOpen: false,
+      documents: [],
     }
   }
 
@@ -51,6 +52,7 @@ class  Documents extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>

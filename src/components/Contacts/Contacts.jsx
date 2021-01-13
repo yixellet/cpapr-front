@@ -10,7 +10,11 @@ class Contacts extends React.Component {
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>
         <PageTitle name="Контакты"/>
-        <iframe title="map" className={styles.map} src="https://yandex.ru/map-widget/v1/?um=constructor%3A1c5c3ba3f9a4fce778a6de2c3c46667b38fdd26c985d98a4ba94527b5be8b4e3&amp;source=constructor" frameBorder="0"></iframe>
+        <iframe title="map" 
+          className={styles.map} 
+          src="https://yandex.ru/map-widget/v1/?um=constructor%3A1c5c3ba3f9a4fce778a6de2c3c46667b38fdd26c985d98a4ba94527b5be8b4e3&amp;source=constructor" 
+          frameBorder="0">
+        </iframe>
         <table className={styles.table}>
           <tbody>
             <tr className={styles.table__row}>
@@ -20,14 +24,38 @@ class Contacts extends React.Component {
             <tr className={styles.table__row}>
               <th className={styles.table__accent}>Телефоны:</th>
               <td className={styles.table__cell}>
-                <p className={styles.table__text}>8 (8512) 66-74-00 - директор</p>
-                <p className={styles.table__text}>8 (8512) 66-74-60 - приемная</p>
-                <p className={styles.table__text}>8 (8512) 66-74-56 - бухгалтерия</p>
-                <p className={styles.table__text}>8 (8512) 66-74-62 - юридический отдел</p>
-                <p className={styles.table__text}>8 (8512) 66-74-61 - отдел пространственных данных</p>
-                <p className={styles.table__text}>8 (8512) 66-74-57 - отдел геоинформационных систем и IT-технологий</p>
-                <p className={styles.table__text}>8 (8512) 66-74-58 - отдел геоинформационных систем и IT-технологий</p>
-                <p className={styles.table__text}>8 (8512) 66-74-59 - отдел мониторинга транспорта</p>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-00</p>
+                  <p className={styles.table__text}>директор</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-60</p>
+                  <p className={styles.table__text}>приемная</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-56</p>
+                  <p className={styles.table__text}>бухгалтерия</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-62</p>
+                  <p className={styles.table__text}>юридический отдел</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-61</p>
+                  <p className={styles.table__text}>отдел пространственных данных</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-57</p>
+                  <p className={styles.table__text}> отдел геоинформационных систем и IT-технологий</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-58</p>
+                  <p className={styles.table__text}> отдел геоинформационных систем и IT-технологий</p>
+                </div>
+                <div className={styles.table__textcontainer}>
+                  <p className={styles.table__text}>8 (8512) 66-74-59</p>
+                  <p className={styles.table__text}> отдел мониторинга транспорта</p>
+                </div>
               </td>
             </tr>
             <tr className={styles.table__row}>

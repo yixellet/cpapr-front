@@ -21,9 +21,33 @@ import Footer from '../Footer/Footer';
 import menu from '../../content/menu';
 import mainPageContent from '../../content/mainPage';
 import news from '../../content/news';
-import docs from '../../content/documents';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      documents: [],
+      news: [],
+    }
+  }
+
+  componentDidMount() {
+    fetch("http://172.17.13.51:8000/api/v1/documents/")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({ documents: data.results })
+      })
+    fetch("http://172.17.13.51:8000/api/v1/news/")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({ news: data.results })
+      })
+  }
 
   render() {
     return (
@@ -31,16 +55,16 @@ class App extends React.Component {
         <Header structure={menu.menu}/>
         <Switch>
           <Route exact path="/">
-            <Main mainPageContent={mainPageContent} news={news.results}/>
+            <Main mainPageContent={mainPageContent} news={this.state.news}/>
           </Route>
           <Route exact path="/news">
-            <News news={news.results} />
+            <News news={this.state.news} />
           </Route>
           <Route path="/news/:id">
             <New content={news.results} />
           </Route>
           <Route path="/docs">
-            <Documents docList={docs}/>
+            <Documents docList={this.state.documents} />
           </Route>
           <Route exact path="/work">
             <Work />
