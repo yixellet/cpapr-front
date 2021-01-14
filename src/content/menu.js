@@ -40,11 +40,8 @@ const menu = {
     {
       id: 5,
       name: 'О нас', 
-      link: '/about', 
-      sub: [
-        {id: 51, name: 'История', link: '/about/history', sub: null},
-        {id: 52, name: 'Структура', link: '/about/structure', sub: null}
-      ]
+      link: '/about/history', 
+      sub: null,
     },
   ]
 };

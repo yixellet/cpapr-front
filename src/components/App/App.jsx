@@ -14,8 +14,6 @@ import Cadaster from '../Work/Cadaster/Cadaster';
 import Education from '../Work/Education/Education';
 import Contacts from '../Contacts/Contacts';
 import About from '../About/About';
-import History from '../About/History/History';
-import Structure from '../About/Structure/Structure';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
 import menu from '../../content/menu';
@@ -90,14 +88,8 @@ class App extends React.Component {
           <Route path="/contacts">
             <Contacts />
           </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route path="/about/history">
-            <History />
-          </Route>
-          <Route path="/about/structure">
-            <Structure />
+          <Route path="/about">
+            <About blockList={[{name: 'История', type: 'history'}, {name: 'Структура организации', type: 'structure'}]}/>
           </Route>
           <Route path="*">
             <PageNotFound />
