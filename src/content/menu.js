@@ -21,14 +21,14 @@ const menu = {
     {
       id: 3,
       name: 'Деятельность', 
-      link: '/work', 
+      link: '/work/databases', 
       sub: [
-        {id: 31, name: 'Ведение информационных ресурсов и баз данных', link: '/work/databases', sub: null},
-        {id: 32, name: 'Региональный фонд пространственных данных', link: '/work/rfpd', sub: null},
-        {id: 33, name: 'Мониторинг пассажирского транспорта', link: '/work/glonass', sub: null},
-        {id: 34, name: 'Геодезия и картография', link: '/work/survey', sub: null},
-        {id: 35, name: 'Землеустроительные и кадастровые работы', link: '/work/cadaster', sub: null},
-        {id: 36, name: 'Образовательные проекты', link: '/work/education', sub: null},
+        {id: 31, name: 'Ведение информационных ресурсов и баз данных', link: 'databases', sub: null},
+        {id: 32, name: 'Региональный фонд пространственных данных', link: 'rfpd', sub: null},
+        {id: 33, name: 'Мониторинг пассажирского транспорта', link: 'glonass', sub: null},
+        {id: 34, name: 'Геодезия и картография', link: 'survey', sub: null},
+        {id: 35, name: 'Землеустроительные и кадастровые работы', link: 'cadaster', sub: null},
+        {id: 36, name: 'Образовательные проекты', link: 'education', sub: null},
       ]
     },
     {
@@ -41,7 +41,10 @@ const menu = {
       id: 5,
       name: 'О нас', 
       link: '/about/history', 
-      sub: null,
+      sub: [
+        {id: 51, name: 'История', link: 'history', sub: null},
+        {id: 52, name: 'Структура организации', link: 'structure', sub: null}
+      ]
     },
   ]
 };

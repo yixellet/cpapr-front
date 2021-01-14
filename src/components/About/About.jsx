@@ -15,7 +15,7 @@ function About(props) {
   return (
     <main className={mainBlockStyles.background}>
       <section className={mainBlockStyles.content}>
-      <PageTitle name="О нас"/>
+        <PageTitle name="О нас"/>
         <div className={aboutStyles.body}>
           <SideMenuRouter list={props.blockList} />
           <Route path={`${path}/history`}>

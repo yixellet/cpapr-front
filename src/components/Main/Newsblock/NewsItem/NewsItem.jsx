@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import styles from './NewsItem.module.css';
 
 class NewsItem extends React.Component {
-
   render() {
     return (
       <li className={styles.item}>

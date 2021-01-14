@@ -13,7 +13,7 @@ class Main extends React.Component {
           <Lead content={this.props.mainPageContent.lead}/>
           <div className={styles.links__block}>
             <Shortcuts content={this.props.mainPageContent.shortcuts} />
-            <Newsblock newsArray={this.props.news.slice(0,4)}/>
+            <Newsblock dateConverter={this.props.dateConverter} newsArray={this.props.news.slice(0,4)}/>
           </div>
         </div>
       </main>

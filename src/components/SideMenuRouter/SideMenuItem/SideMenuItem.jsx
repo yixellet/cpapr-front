@@ -8,7 +8,7 @@ function SideMenuItem(props) {
   
   return (
     <li className={styles.item}>
-        <NavLink onClick={props.onClick} to={`${url}/${props.content.type}`} className={styles.link} activeClassName={styles.link_active}>{props.content.name}</NavLink>
+        <NavLink onClick={props.onClick} to={`${url}/${props.content.link}`} className={styles.link} activeClassName={styles.link_active}>{props.content.name}</NavLink>
     </li>
   )
 }

@@ -1,12 +1,12 @@
 import React from "react";
 
 import StaffPhoto from '../../../images/employees/cpapr_staff.jpg';
-import styles from './History.module.css';
+import styles from '../../CommonTextBlock/CommonTextBlock.module.css';
 
 class History extends React.Component {
   render() {
     return (
-      <div className={styles.history}>
+      <div className={styles.content}>
         <img className={styles.image} src={StaffPhoto} alt='Коллектив организации'/>
         <p className={styles.text}><span className={styles.accent}>В 2002 году</span> Администрацией Астраханской области был создан 
           «Научно-исследовательский геоинформационный центр» (НИГИЦ) Астраханской области.</p>

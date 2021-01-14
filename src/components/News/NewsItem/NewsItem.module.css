@@ -13,7 +13,8 @@
 }
 
 .newsitem__title {
-  font-size: 18px;
+  font-family: 'Roboto Slab';
+  font-size: 22px;
   margin-top: 0;
   font-weight: bold;
 }

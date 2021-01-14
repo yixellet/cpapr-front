@@ -1,21 +1,18 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import News from '../News/News';
 import New from '../News/New/New';
 import Documents from '../Documents/Documents';
 import Work from '../Work/Work';
-import Databases from '../Work/Databases/Databases';
-import Rfpd from '../Work/Rfpd/Rfpd';
-import Glonass from '../Work/Glonass/Glonass';
-import Survey from '../Work/Survey/Survey';
-import Cadaster from '../Work/Cadaster/Cadaster';
-import Education from '../Work/Education/Education';
 import Contacts from '../Contacts/Contacts';
 import About from '../About/About';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
+
+import { extractFullDate } from '../../utils/dateConverter';
 import menu from '../../content/menu';
 import mainPageContent from '../../content/mainPage';
 import news from '../../content/news';
@@ -53,7 +50,7 @@ class App extends React.Component {
         <Header structure={menu.menu}/>
         <Switch>
           <Route exact path="/">
-            <Main mainPageContent={mainPageContent} news={this.state.news}/>
+            <Main dateConverter={extractFullDate} mainPageContent={mainPageContent} news={this.state.news}/>
           </Route>
           <Route exact path="/news">
             <News news={this.state.news} />
@@ -64,32 +61,14 @@ class App extends React.Component {
           <Route path="/docs">
             <Documents docList={this.state.documents} />
           </Route>
-          <Route exact path="/work">
-            <Work />
-          </Route>
-          <Route path="/work/databases">
-            <Databases />
-          </Route>
-          <Route path="/work/rfpd">
-            <Rfpd />
-          </Route>
-          <Route path="/work/glonass">
-            <Glonass />
-          </Route>
-          <Route path="/work/survey">
-            <Survey />
-          </Route>
-          <Route path="/work/cadaster">
-            <Cadaster />
-          </Route>
-          <Route path="/work/education">
-            <Education />
+          <Route path="/work">
+            <Work blockList={menu.menu[3].sub}/>
           </Route>
           <Route path="/contacts">
             <Contacts />
           </Route>
           <Route path="/about">
-            <About blockList={[{name: 'История', type: 'history'}, {name: 'Структура организации', type: 'structure'}]}/>
+            <About blockList={menu.menu[5].sub}/>
           </Route>
           <Route path="*">
             <PageNotFound />
