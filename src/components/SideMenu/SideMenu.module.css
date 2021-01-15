@@ -1,5 +1,5 @@
 .side_menu {
-  width: 30%;
+  width: 400px;
   margin-right: 20px;
   background-color: rgb(255, 255, 255);
   border-right: 1px solid #4f83a8;
@@ -10,16 +10,17 @@
 }
 
 .list {
-  margin: 0;
+  margin: 0 10px 0 0;
   padding: 0;
   list-style-type: none;
+  width: 226px;
 }
 
 @media screen and (max-width: 768px) {
   .side_menu {
     position: absolute;
     top: -60px;
-    min-width: 280px;
+    width: 280px;
     min-height: 200px;
     border-bottom-right-radius: 10px;
     border-right: none;

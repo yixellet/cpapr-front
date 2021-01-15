@@ -1,0 +1,11 @@
+.container {
+  background-color: rgb(111, 206, 206);
+}
+
+.current {
+  color: red;
+}
+
+.regular {
+  color: black;
+}

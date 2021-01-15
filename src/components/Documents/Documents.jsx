@@ -14,36 +14,54 @@ class  Documents extends React.Component {
 
     this.handleSideMenuOpenOrClose = this.handleSideMenuOpenOrClose.bind(this);
     this.getUniqueValues = this.getUniqueValues.bind(this);
-    this.documentTypes = this.getUniqueValues(this.props.docList);
 
     this.state = {
-      activeDocumentType: this.documentTypes[0],
       isMenuOpen: false,
       documents: [],
+      documentTypes: [],
+      activeDocumentType: null,
     }
+  }
+
+  componentDidMount() {
+    fetch("http://172.17.13.51:8000/api/v1/documents/")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          documents: data,
+          documentTypes: this.getUniqueValues(data),
+        })
+        this.setState({
+          activeDocumentType: this.state.documentTypes[0].type,
+        })
+      })
   }
 
   getUniqueValues(arr) {
     let result = [];
     let objResult = [];
     for (let obj of arr) {
-      if (!result.includes(obj.typeName)) {
-        result.push(obj.typeName);
-        objResult.push({name: obj.typeName, link: obj.type})
+      if (!result.includes(obj.docType)) {
+        result.push(obj.docType);
+        objResult.push({type: obj.docType, typeName: obj.docTypeName})
+
       }
     }
     return objResult;
+
   }
 
   chooseDocumentType(type) {
-    const res = this.props.docList.filter((doc) => {
-      return (doc.type === type)
+    const res = this.state.documents.filter((doc) => {
+      return (doc.docType === type)
     })
     return res
   }
 
   handleChangeDocType(docType) {
-    this.setState({ activeDocumentType: docType, isMenuOpen: false })
+    this.setState({ activeDocumentType: docType.type, isMenuOpen: false })
   }
 
   handleSideMenuOpenOrClose() {
@@ -52,7 +70,7 @@ class  Documents extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    const { documentTypes, activeDocumentType } = this.state;
     return (
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>
@@ -62,13 +80,13 @@ class  Documents extends React.Component {
               <button onClick={this.handleSideMenuOpenOrClose} className={sideMenuStyles.button}/>
               <ul className={sideMenuStyles.list}>
                 {
-                  this.documentTypes.map((item) => {
-                    return (<SideMenuItem onItemClick={this.handleChangeDocType.bind(this, item)} key={item.link} content={item} isActive={item === this.state.activeDocumentType} />)
+                  documentTypes.map((item) => {
+                    return (<SideMenuItem onItemClick={this.handleChangeDocType.bind(this, item)} key={item.type} content={item} isActive={item.type === activeDocumentType} />)
                   })
                 }
               </ul>
             </div>
-            <DocumentsList list={this.chooseDocumentType(this.state.activeDocumentType.link)} />
+            <DocumentsList list={this.chooseDocumentType(activeDocumentType)} />
           </div>
         </section>
       </main>

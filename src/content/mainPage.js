@@ -1,4 +1,3 @@
-import menu from './menu';
 import leadImage from '../images/aerial-view-earth-exploration-flying-60132.jpg';
 
 const mainPage = {
@@ -11,22 +10,22 @@ const mainPage = {
     {
       id: 0,
       name: 'Картография',
-      link: menu.menu[3].sub[0].link,
+      link: '/work/databases',
     },
     {
       id: 1,
       name: 'Запрос данных РФПД',
-      link: menu.menu[3].sub[1].link,
+      link: '/work/rfpd',
     },
     {
       id: 2,
       name: 'Мониторинг транспорта',
-      link: menu.menu[3].sub[2].link,
+      link: '/work/glonass',
     },
     {
       id: 3,
       name: 'Землеустройство и кадастр',
-      link: menu.menu[3].sub[4].link,
+      link: '/work/cadaster',
     },
   ]
 };

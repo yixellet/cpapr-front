@@ -4,6 +4,10 @@ import NewsItem from '../NewsItem/NewsItem';
 import classes from './NewsList.module.css';
 
 class NewsList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.props = props;
+  }
   render() {
     return (
       <ul className={classes.newslist}>

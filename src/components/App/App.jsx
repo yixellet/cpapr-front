@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -22,19 +22,11 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      documents: [],
       news: [],
     }
   }
 
   componentDidMount() {
-    fetch("http://172.17.13.51:8000/api/v1/documents/")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        this.setState({ documents: data.results })
-      })
     fetch("http://172.17.13.51:8000/api/v1/news/")
       .then((res) => {
         return res.json();
@@ -53,13 +45,13 @@ class App extends React.Component {
             <Main dateConverter={extractFullDate} mainPageContent={mainPageContent} news={this.state.news}/>
           </Route>
           <Route exact path="/news">
-            <News news={this.state.news} />
+            <News dateConverter={extractFullDate} />
           </Route>
           <Route path="/news/:id">
-            <New content={news.results} />
+            <New dateConverter={extractFullDate} content={news.results} />
           </Route>
-          <Route path="/docs">
-            <Documents docList={this.state.documents} />
+          <Route exact path="/docs">
+            <Documents />
           </Route>
           <Route path="/work">
             <Work blockList={menu.menu[3].sub}/>
@@ -70,9 +62,10 @@ class App extends React.Component {
           <Route path="/about">
             <About blockList={menu.menu[5].sub}/>
           </Route>
-          <Route path="*">
+          <Route exact path="/404">
             <PageNotFound />
           </Route>
+          <Redirect to="/404" />
         </Switch>
         <Footer />
       </>

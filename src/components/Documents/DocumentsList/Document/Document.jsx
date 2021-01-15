@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
 import styles from './Document.module.css';
 
@@ -7,7 +6,7 @@ class Document extends React.Component {
   render() {
     return (
       <li className={styles.item}>
-        <Link className={styles.link} target="blank" to={this.props.content.link}>{this.props.content.name}</Link>
+        <a className={styles.link}  target="_blank" rel="noreferrer noopener" href={this.props.content.link}>{this.props.content.name}</a>
       </li>
     )
   }

@@ -14,7 +14,7 @@ class Databases extends React.Component {
           <li className={styles.listItem}>Обычный пункт</li>
           <li className={styles.listItem}><span className={styles.accent}>Выделенный пункт</span></li>
         </ul>
-        <p className={styles.text}>И еще немного обычного текста. Так мы оформляем ссылки: <a className={styles.link} href='https://minprom.astrobl.ru/'>Сайт Минпрома</a>, например</p>
+        <p className={styles.text}>И еще немного обычного текста. Так мы оформляем ссылки: <a className={styles.link} href='https://minprom.astrobl.ru/' target="_blank" rel="noreferrer noopener">Сайт Минпрома</a>, например</p>
       </div>
     )
   }
