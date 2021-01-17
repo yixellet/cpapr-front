@@ -11,23 +11,30 @@ import Contacts from '../Contacts/Contacts';
 import About from '../About/About';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
+import SignIn from '../SignIn/SignIn';
 
 import { extractFullDate } from '../../utils/dateConverter';
 import menu from '../../content/menu';
 import mainPageContent from '../../content/mainPage';
-import news from '../../content/news';
+import { NEWS_URL, NEWS_PAGESIZE } from '../../content/config';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      isAdmin: localStorage.getItem('cpapr-token'),
       news: [],
     }
+    this.checkIsAdmin = this.checkIsAdmin.bind(this);
+  }
+
+  checkIsAdmin() {
+    this.setState({ isAdmin: localStorage.getItem('cpapr-token') })
   }
 
   componentDidMount() {
-    fetch("http://172.17.13.51:8000/api/v1/news/")
+    fetch(`${NEWS_URL}?page=1&count=10`)
       .then((res) => {
         return res.json();
       })
@@ -39,16 +46,16 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header structure={menu.menu}/>
+        <Header structure={menu.menu} isAdmin={this.state.isAdmin} onSignOut={this.checkIsAdmin} />
         <Switch>
           <Route exact path="/">
             <Main dateConverter={extractFullDate} mainPageContent={mainPageContent} news={this.state.news}/>
           </Route>
           <Route exact path="/news">
-            <News dateConverter={extractFullDate} />
+            <News url={NEWS_URL} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
           </Route>
           <Route path="/news/:id">
-            <New dateConverter={extractFullDate} content={news.results} />
+            <New />
           </Route>
           <Route exact path="/docs">
             <Documents />
@@ -61,6 +68,9 @@ class App extends React.Component {
           </Route>
           <Route path="/about">
             <About blockList={menu.menu[5].sub}/>
+          </Route>
+          <Route exact path="/admin">
+            <SignIn onSignIn={this.checkIsAdmin} />
           </Route>
           <Route exact path="/404">
             <PageNotFound />

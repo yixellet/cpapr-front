@@ -6,27 +6,33 @@
   padding-bottom: 10px;
 }
 
-.newsitem:last-of-type .newsitem__text {
+.newsitem:last-of-type .text {
   border-bottom: none;
   padding-bottom: 0px;
   
 }
 
-.newsitem__title {
+.title {
   font-family: 'Roboto Slab';
   font-size: 22px;
   margin-top: 0;
+  margin-bottom: 4px;
   font-weight: bold;
 }
 
-.newsitem__image {
+.image {
   width: 165px;
   height: 165px;
   margin-right: 20px;
 }
 
+.date {
+  font-size: 11px;
+  color: rgb(41, 41, 41);
+  margin-top: 0;
+}
 
-.newsitem__text {
+.text {
   width: 558px;
   margin: 0;
   font-family: "Roboto";
@@ -36,25 +42,62 @@
   
 }
 
-.newsitem__content {
+.content {
   font-size: 14px;
   font-weight: 400;
 }
 
-.newsitem__readmore {
+.links_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.readmore {
   text-decoration: none;
   color: #0A5992;
   font-size: 14px;
   font-weight: 300;
 }
 
-.newsitem__readmore:hover {
+.readmore:hover {
   color: rgb(97, 179, 238);
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.button_delete {
+  background-color: rgb(255, 152, 152);
+  background-image: url('../../../images/trash.svg');
+}
+
+.button_delete:hover {
+  background-color: rgb(247, 101, 101);
+  background-image: url('../../../images/trash_hover.svg');
+}
+
+.button_edit {
+  background-color: rgb(139, 163, 125);
+  background-image: url('../../../images/edit.svg');
+}
+
+.button_edit:hover {
+  background-color: rgb(63, 126, 27);
+  background-image: url('../../../images/edit_hover.svg');
 }
 
 @media screen and (max-width: 768px) {
 
-  .newsitem__image {
+  .image {
     width: 170px;
     height: 170px;
     margin-right: 15px;

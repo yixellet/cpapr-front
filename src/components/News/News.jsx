@@ -2,6 +2,7 @@ import React from "react";
 import PageTitle from '../PageTitle/PageTitle';
 import NewsList from './NewsList/NewsList';
 import Paginator from './Paginator/Paginator';
+import EditPopup from './EditPopup/EditPopup';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 
@@ -11,17 +12,17 @@ class News extends React.Component {
 
     this.state = {
       news: {},
-      isFetching: false,
+      isFetching: true,
       currentPage: 1,
     }
 
-    this.handleChangePage = this.handleChangePage.bind(this);
+    this.setCurrentPage = this.setCurrentPage.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { currentPage } = this.state;
     this.setState({isFetching: true})
-    fetch(`http://172.17.13.51:8000/api/v1/news/?page=${currentPage}`)
+    fetch(`${this.props.url}?count=${this.props.pagesize}&page=${currentPage}`)
       .then((res) => {
         return res.json();
       })
@@ -33,10 +34,19 @@ class News extends React.Component {
       })
   }
 
-  handleChangePage(page) {
-    this.setState({
-      currentPage: page
-    })
+  setCurrentPage(pageq) {
+    this.setState(() => ({currentPage: pageq}))
+    this.setState({isFetching: true})
+    fetch(`${this.props.url}?count=${this.props.pagesize}&page=${pageq}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          isFetching: false,
+          news: data,
+        });
+      })
   }
 
   render() {
@@ -46,8 +56,14 @@ class News extends React.Component {
         <section className={mainBlockStyles.content}>
           <PageTitle name="Новости"/>
           {
-            isFetching ? <p>FETCHING</p> : <><NewsList newsArray={news.results} /><Paginator onPageChange={this.handleChangePage} data={news} currentPage={currentPage} /></>
+            isFetching 
+            ? <p>FETCHING</p> 
+            : <>
+              <NewsList newsArray={news} isAdmin={this.props.isAdmin} />
+              <Paginator onPageChange={this.setCurrentPage} data={news} currentPage={currentPage} pagesize={this.props.pagesize} />
+            </>
           }
+          <EditPopup />
         </section>
       </main>
     )

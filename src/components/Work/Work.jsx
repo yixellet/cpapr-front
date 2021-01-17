@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route, useRouteMatch } from 'react-router-dom';
+import { Route, useRouteMatch } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 import SideMenuRouter from '../SideMenuRouter/SideMenuRouter';
 import Databases from './Databases/Databases';
@@ -38,7 +38,6 @@ function Work(props) {
         <Route path={`${path}/education`}>
           <Education />
         </Route>
-        <Redirect to="/404" />
       </div>
       </section>
     </main>

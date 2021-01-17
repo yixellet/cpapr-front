@@ -1,0 +1,34 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.445);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  width: 700px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #000000;
+  position: relative;
+}
+
+.close_button {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(255, 152, 152);
+  background-image: url('../../../images/close.svg');
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}

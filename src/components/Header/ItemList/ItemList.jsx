@@ -4,6 +4,15 @@ import MenuItem from '../MenuItem/MenuItem';
 import './ItemList.css';
 
 class ItemList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleSignOut = this.handleSignOut.bind(this);
+  }
+  
+  handleSignOut() {
+    localStorage.removeItem('cpapr-token');
+    this.props.onSignOut();
+  }
 
   render() {
     return (
@@ -15,6 +24,7 @@ class ItemList extends React.Component {
               return <MenuItem link={item.link} name={item.name} key={item.id} onClick={this.props.onClick}/>
             }
           )}
+          {this.props.isAdmin ? <button onClick={this.handleSignOut}>Выход</button> : null}
         </ul>
       </>
     )

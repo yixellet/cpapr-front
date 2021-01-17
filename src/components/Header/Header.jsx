@@ -32,7 +32,7 @@ class Header extends React.Component {
           <Logo />
           <nav>
             <MenuButton onClick={this.handleMenuOpen}/>
-            <ItemList list={this.props.structure} isOpen={this.state.isOpen} onClick={this.handleMenuClose}/>
+            <ItemList list={this.props.structure} isOpen={this.state.isOpen} onClick={this.handleMenuClose} isAdmin={this.props.isAdmin} onSignOut={this.props.onSignOut} />
           </nav>
         </div>
       </header>
