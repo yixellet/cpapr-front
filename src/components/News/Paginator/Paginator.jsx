@@ -7,7 +7,7 @@ class Paginator extends React.Component {
     super(props)
 
     this.state = {
-      pages: this.generatePagesArray(Math.ceil(this.props.data.totalCount / this.props.pagesize)),
+      pages: this.generatePagesArray(Math.ceil(this.props.data.count / this.props.pagesize)),
     }
     
   }

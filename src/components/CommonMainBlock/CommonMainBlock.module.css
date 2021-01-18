@@ -17,6 +17,7 @@
   position: relative;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #4e697a;
+  position: relative;
 }
 
 @media screen and (min-width: calc(1147px + 30px)) {

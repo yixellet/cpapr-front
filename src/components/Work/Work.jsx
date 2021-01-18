@@ -8,6 +8,7 @@ import Glonass from './Glonass/Glonass';
 import Survey from './Survey/Survey';
 import Cadaster from './Cadaster/Cadaster';
 import Education from './Education/Education';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 import workStyles from './Work.module.css';
@@ -20,23 +21,26 @@ function Work(props) {
       <PageTitle name="Деятельность"/>
       <div className={workStyles.body}>
         <SideMenuRouter list={props.blockList} />
-        <Route path={`${path}/databases`}>
+        <Route exact path={`${path}/databases`}>
           <Databases />
         </Route>
-        <Route path={`${path}/rfpd`}>
+        <Route exact path={`${path}/rfpd`}>
           <Rfpd />
         </Route>
-        <Route path={`${path}/glonass`}>
+        <Route exact path={`${path}/glonass`}>
           <Glonass />
         </Route>
-        <Route path={`${path}/survey`}>
+        <Route exact path={`${path}/survey`}>
           <Survey />
         </Route>
-        <Route path={`${path}/cadaster`}>
+        <Route exact path={`${path}/cadaster`}>
           <Cadaster />
         </Route>
-        <Route path={`${path}/education`}>
+        <Route exact path={`${path}/education`}>
           <Education />
+        </Route>
+        <Route exact path="/404">
+          <PageNotFound />
         </Route>
       </div>
       </section>

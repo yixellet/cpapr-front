@@ -1,29 +1,59 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
-import Arrows from './Arrows/Arrows';
-import PageTitle from '../../PageTitle/PageTitle';
+import { withRouter } from "react-router";
 
 import mainBlockStyles from '../../CommonMainBlock/CommonMainBlock.module.css';
+import styles from './New.module.css';
 
-function New(props) {
-  const ids = useParams().id;
-  let news = props.content;
-  const newsItem = news.find(function(f) {
-    return (f.id === ids);
-  });
-  const prevItem = news.indexOf(newsItem) + 1
-  const nextItem = news.indexOf(newsItem) - 1
+class New extends React.Component {
+  constructor(props) {
+    super(props)
 
-  return (
-    <main className={mainBlockStyles.background}>
-      <section className={mainBlockStyles.content}>
-        <Arrows linkToPrev={`${news[prevItem].id}`} linkToNext={`${news[nextItem].id}`}/>
-        <PageTitle name={newsItem.title}/>
-        <p>{newsItem.text}</p>
-      </section>
-    </main>
-  )
+    this.state = {
+      isFetching: false,
+      content: {},
+      error: null,
+    }
+  }
+
+  componentDidMount() {
+    this.setState({isFetching: true})
+    fetch(`${this.props.url}/news/${this.props.match.params.id}/`)
+    .then((res) => {
+      if (res.status === 404) {
+        window.location.replace('/404');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      this.setState({
+        isFetching: false,
+        content: data,
+      });
+    })
+  }
+
+  render() {
+    const { content, isFetching } = this.state;
+    return (
+      <main className={mainBlockStyles.background}>
+        <section className={mainBlockStyles.content}>
+            {
+              isFetching ?
+              <p>ЗАГРУЗКА ДАННЫХ...</p> :
+              <div className={styles.container}>
+                {content.image ? <img className={styles.image} alt="illustration" src={content.image}/> : null }
+                <div className={styles.textContent}>
+                  <h2 className={styles.title}>{content.title}</h2>
+                  <p className={styles.date}>{this.props.dateConverter(content.date_publisher)}</p>
+                  <p className={styles.text}>{content.text}</p>
+                </div>
+              </div>
+            }
+        </section>
+      </main>
+    )
+  }
 
 }
 
-export default New;
+export default withRouter(New);

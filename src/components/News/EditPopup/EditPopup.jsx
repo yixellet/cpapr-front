@@ -8,13 +8,13 @@ class EditPopup extends React.Component {
       <div className={styles.container}>
         <div className={styles.popup}>
           <button className={styles.close_button} />
-          <h3 clasName={styles.title}>Редактировать новость</h3>
+          <h3 className={styles.title}>Редактировать новость</h3>
           <form className={styles.form} name="edit">
             <label className={styles.label}>Заголовок</label>
             <input className={styles.input} name="label" type="text" />
 
             <label className={styles.label}>Текст</label>
-            <input className={styles.input} name="label" type="text" />
+            <textarea className={styles.input} name="label" type="text" />
 
             <label className={styles.label}>Изображение</label>
             <input className={styles.input} name="label" type="file" />

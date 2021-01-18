@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .popup {
@@ -15,8 +16,9 @@
   height: 500px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 5px 5px 10px #000000;
+  box-shadow: 5px 5px 10px #252525;
   position: relative;
+  padding: 0;
 }
 
 .close_button {
@@ -31,4 +33,45 @@
   cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #272727;
+}
+
+.close_button:hover {
+  background-color: rgb(247, 101, 101);
+  background-image: url('../../../images/close_hover.svg');
+}
+
+.title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 20px 20px 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.label {
+  margin-bottom: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.input {
+  margin-bottom: 30px;
+  height: 30px;
+}
+
+.submit {
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
 }

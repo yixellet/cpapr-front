@@ -2,7 +2,7 @@ import React from "react";
 import PageTitle from '../PageTitle/PageTitle';
 import NewsList from './NewsList/NewsList';
 import Paginator from './Paginator/Paginator';
-import EditPopup from './EditPopup/EditPopup';
+// import EditPopup from './EditPopup/EditPopup';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 
@@ -22,7 +22,8 @@ class News extends React.Component {
   componentDidMount() {
     const { currentPage } = this.state;
     this.setState({isFetching: true})
-    fetch(`${this.props.url}?count=${this.props.pagesize}&page=${currentPage}`)
+    // fetch(`${this.props.url}/news?count=${this.props.pagesize}&page=${currentPage}`)
+    fetch(`${this.props.url}/news/?count=${this.props.pagesize}&page=${currentPage}`)
       .then((res) => {
         return res.json();
       })
@@ -37,7 +38,7 @@ class News extends React.Component {
   setCurrentPage(pageq) {
     this.setState(() => ({currentPage: pageq}))
     this.setState({isFetching: true})
-    fetch(`${this.props.url}?count=${this.props.pagesize}&page=${pageq}`)
+    fetch(`${this.props.url}/news/?count=${this.props.pagesize}&page=${pageq}`)
       .then((res) => {
         return res.json();
       })
@@ -63,7 +64,7 @@ class News extends React.Component {
               <Paginator onPageChange={this.setCurrentPage} data={news} currentPage={currentPage} pagesize={this.props.pagesize} />
             </>
           }
-          <EditPopup />
+          {/* <EditPopup /> */}
         </section>
       </main>
     )

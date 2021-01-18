@@ -18,13 +18,14 @@ class NewsItem extends React.Component {
   render() {
     return (
       <li className={classes.newsitem}>
-        <img className={classes.image} alt="illustration" src={this.props.image}/>
+        {this.props.image ? <img className={classes.image} alt="illustration" src={this.props.image}/> : <div className={classes.image_placeholder} /> }
         <div className={classes.text}>
-          <h3 className={classes.title}>{this.props.title}</h3>
+          {/* <h3 className={classes.title}>{this.props.title}</h3> */}
+          <Link to={this.props.path} className={classes.title}>{this.props.title}</Link>
           <p className={classes.date}>{extractFullDate(this.props.date)}</p>
           <p className={classes.content}>{this.cutText(this.props.content, 300)}</p>
           <div className={classes.links_block}>
-            <Link to={this.props.path} className={classes.readmore}>Читать далее...</Link>
+            
             {this.props.isAdmin ? 
             <div>
               <button className={`${classes.button} ${classes.button_edit}`}></button>

@@ -8,7 +8,8 @@ class NewsList extends React.Component {
     return (
       <ul className={classes.newslist}>
         {this.props.newsArray.results.map((item) => {
-          return <NewsItem isAdmin={this.props.isAdmin} image={item.image} title={item.title} content={item.content} date={item.date} path={`news/${item.id}`} key={item._id}/>
+          // return <NewsItem isAdmin={this.props.isAdmin} image={item.image} title={item.title} content={item.content} date={item.date} path={`news/${item.id}`} key={item._id}/>
+          return <NewsItem isAdmin={this.props.isAdmin} image={item.image} title={item.title} content={item.text} date={item.date_publisher} path={`news/${item.id}`} key={item.id}/>
         })}
       </ul>
     )

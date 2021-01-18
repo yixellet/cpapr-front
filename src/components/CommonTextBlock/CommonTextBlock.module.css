@@ -4,6 +4,7 @@
 
 .image {
   width: 600px;
+  margin-bottom: 30px;
 }
 
 .text, .list, .listItem {
@@ -11,6 +12,8 @@
   font-size: 16px;
   line-height: 1.5;
   width: 80%;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .accent {

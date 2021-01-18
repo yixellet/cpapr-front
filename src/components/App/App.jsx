@@ -16,7 +16,7 @@ import SignIn from '../SignIn/SignIn';
 import { extractFullDate } from '../../utils/dateConverter';
 import menu from '../../content/menu';
 import mainPageContent from '../../content/mainPage';
-import { NEWS_URL, NEWS_PAGESIZE } from '../../content/config';
+import { BASE_URL_HOME, BASE_URL_WORK, NEWS_PAGESIZE } from '../../content/config';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +34,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${NEWS_URL}?page=1&count=10`)
+    // fetch(`${BASE_URL_HOME}/news?page=1&count=10`)
+    fetch(`${BASE_URL_WORK}/news/?page=1`)
       .then((res) => {
         return res.json();
       })
@@ -52,10 +53,10 @@ class App extends React.Component {
             <Main dateConverter={extractFullDate} mainPageContent={mainPageContent} news={this.state.news}/>
           </Route>
           <Route exact path="/news">
-            <News url={NEWS_URL} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
+            <News url={BASE_URL_WORK} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
           </Route>
           <Route path="/news/:id">
-            <New />
+            <New dateConverter={extractFullDate} url={BASE_URL_WORK} />
           </Route>
           <Route exact path="/docs">
             <Documents />
@@ -63,7 +64,7 @@ class App extends React.Component {
           <Route path="/work">
             <Work blockList={menu.menu[3].sub}/>
           </Route>
-          <Route path="/contacts">
+          <Route exact path="/contacts">
             <Contacts />
           </Route>
           <Route path="/about">
