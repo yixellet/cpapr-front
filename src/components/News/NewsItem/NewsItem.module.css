@@ -8,8 +8,14 @@
 
 .newsitem:last-of-type .text {
   border-bottom: none;
-  padding-bottom: 0px;
-  
+  padding-bottom: 0px;  
+}
+
+.title_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .title {
@@ -19,7 +25,13 @@
   margin-bottom: 4px;
   font-weight: bold;
   text-decoration: none;
-  color: #000;
+  color: #003353;
+  cursor: pointer;
+  transition: color 300ms ease;
+}
+
+.title:hover {
+  color: #35759c;
 }
 
 .image {
@@ -43,13 +55,12 @@
 }
 
 .text {
-  width: 558px;
+  width: 100%;
   margin: 0;
   font-family: "Roboto";
   line-height: 1.5;
   border-bottom: solid #dadada 1px;
-  padding-bottom: 15px;
-  
+  padding-bottom: 15px;  
 }
 
 .content {
@@ -61,47 +72,39 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.readmore {
-  text-decoration: none;
-  color: #0A5992;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.readmore:hover {
-  color: rgb(97, 179, 238);
+  flex-wrap: nowrap;
 }
 
 .button {
-  width: 40px;
-  height: 40px;
-  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  transition: background-color 300ms ease;
+  transition: background-image 300ms ease;
 }
 
 .button_delete {
-  background-color: rgb(255, 152, 152);
+  background-color: #07141c;
   background-image: url('../../../images/trash.svg');
 }
 
 .button_delete:hover {
-  background-color: rgb(247, 101, 101);
+  background-color: #35759c;
   background-image: url('../../../images/trash_hover.svg');
 }
 
 .button_edit {
-  background-color: rgb(139, 163, 125);
+  background-color: #07141c;
   background-image: url('../../../images/edit.svg');
 }
 
 .button_edit:hover {
-  background-color: rgb(63, 126, 27);
+  background-color: #35759c;
   background-image: url('../../../images/edit_hover.svg');
 }
 

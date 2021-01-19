@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { extractFullDate } from '../../../utils/dateConverter';
 
 import classes from './NewsItem.module.css';
+import placeHolder from '../../../images/placeholder.png';
 
 class NewsItem extends React.Component {
 
@@ -18,20 +19,21 @@ class NewsItem extends React.Component {
   render() {
     return (
       <li className={classes.newsitem}>
-        {this.props.image ? <img className={classes.image} alt="illustration" src={this.props.image}/> : <div className={classes.image_placeholder} /> }
+        <img className={classes.image} alt="illustration" src={this.props.image ? this.props.image : placeHolder}/>
         <div className={classes.text}>
-          {/* <h3 className={classes.title}>{this.props.title}</h3> */}
-          <Link to={this.props.path} className={classes.title}>{this.props.title}</Link>
+          <div className={classes.title_block}>
+            <Link to={this.props.path} className={classes.title}>{this.props.title}</Link>
+            <div className={classes.links_block}>
+              {this.props.isAdmin ? 
+              <>
+                <button onClick={this.props.onOpenEditPopupButtonClick} className={`${classes.button} ${classes.button_edit}`}></button>
+                <button className={`${classes.button} ${classes.button_delete}`}></button>
+              </> : 
+              null }
+            </div>
+          </div>
           <p className={classes.date}>{extractFullDate(this.props.date)}</p>
           <p className={classes.content}>{this.cutText(this.props.content, 300)}</p>
-          <div className={classes.links_block}>
-            
-            {this.props.isAdmin ? 
-            <div>
-              <button className={`${classes.button} ${classes.button_edit}`}></button>
-              <button className={`${classes.button} ${classes.button_delete}`}></button>
-            </div> : null }
-          </div>
         </div>
       </li>
     )

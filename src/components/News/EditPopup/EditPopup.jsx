@@ -3,22 +3,33 @@ import React from "react";
 import styles from './EditPopup.module.css';
 
 class EditPopup extends React.Component {
+
   render() {
+    const { isOpened, onCloseButtonClick, type } = this.props;
+    let title;
+    if (type === 'edit') {
+      title = 'Редактировать новость'
+    } else if (type === 'add') {
+      title = 'Добавить новость'
+    };
     return (
-      <div className={styles.container}>
+      <div className={isOpened ? `${styles.container} ${styles.container_opened}` : styles.container}>
         <div className={styles.popup}>
-          <button className={styles.close_button} />
-          <h3 className={styles.title}>Редактировать новость</h3>
+          <button className={styles.close_button} onClick={onCloseButtonClick} />
+          <h3 className={styles.title}>{title}</h3>
           <form className={styles.form} name="edit">
-            <label className={styles.label}>Заголовок</label>
-            <input className={styles.input} name="label" type="text" />
-
+            <div className={styles.image_title_block}>
+              <label className={styles.label_input_file}>
+                <span className={styles.span}>Загрузить изображение</span>
+                <input className={styles.input_file} name="label" type="file" />
+              </label>
+              <div className={styles.title_block}>
+                <label className={styles.label}>Заголовок</label>
+                <textarea className={styles.input_title} name="label" type="text" />
+              </div>
+            </div>
             <label className={styles.label}>Текст</label>
-            <textarea className={styles.input} name="label" type="text" />
-
-            <label className={styles.label}>Изображение</label>
-            <input className={styles.input} name="label" type="file" />
-
+            <textarea className={styles.textarea} name="label" type="text" rows="4" />
             <input className={styles.submit} name="submit" type="submit" value="Применить" />
           </form>
         </div>

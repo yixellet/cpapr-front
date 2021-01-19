@@ -9,7 +9,7 @@ const mainPage = {
   shortcuts: [
     {
       id: 0,
-      name: 'Картография',
+      name: 'Цифровая картография',
       link: '/work/databases',
     },
     {

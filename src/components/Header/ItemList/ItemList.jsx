@@ -24,7 +24,7 @@ class ItemList extends React.Component {
               return <MenuItem link={item.link} name={item.name} key={item.id} onClick={this.props.onClick}/>
             }
           )}
-          {this.props.isAdmin ? <button onClick={this.handleSignOut}>Выход</button> : null}
+          {this.props.isAdmin ? <button onClick={this.handleSignOut} className="exit_admin">Выход</button> : null}
         </ul>
       </>
     )

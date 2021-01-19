@@ -12,6 +12,11 @@
   line-height: 1;
   margin-bottom: 20px;
   display: block;
+  transition: color 300ms ease;
+}
+
+.title:hover {
+  color: #81badd;
 }
 
 .newslist {

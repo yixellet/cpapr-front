@@ -26,7 +26,7 @@ const structure = [
         id: '103',
         name: 'Кущенкова Юлия Сергеевна',
         position: 'Главный бухгалтер',
-        phoneNumber: '+7 (8512) 66-74-00',
+        phoneNumber: '+7 (8512) 66-74-56',
         image: kushenkova,
       },
       {

@@ -1,3 +1,14 @@
+.exit_admin {
+  background-color: rgb(255, 96, 96);
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 5px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
 @media screen and (min-width: 768px) {
   .menu__list {
     margin: 0;

@@ -10,7 +10,7 @@ class Shortcuts extends React.Component {
       <section className={styles.section}>
         <ul className={styles.shortcuts}>
           {this.props.content.map((item) => {
-            return <Shortcut name={item.name} link={item.link} key={item.id}/>
+            return <Shortcut name={item.name} link={item.link} key={item.id} image={item.image} />
           })}
         </ul>
       </section>

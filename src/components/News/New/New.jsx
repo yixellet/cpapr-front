@@ -12,6 +12,7 @@ class New extends React.Component {
       isFetching: false,
       content: {},
       error: null,
+      text: [],
     }
   }
 
@@ -28,12 +29,13 @@ class New extends React.Component {
       this.setState({
         isFetching: false,
         content: data,
+        text: data.text.split('\n'),
       });
     })
   }
 
   render() {
-    const { content, isFetching } = this.state;
+    const { content, isFetching, text } = this.state;
     return (
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>
@@ -45,7 +47,12 @@ class New extends React.Component {
                 <div className={styles.textContent}>
                   <h2 className={styles.title}>{content.title}</h2>
                   <p className={styles.date}>{this.props.dateConverter(content.date_publisher)}</p>
-                  <p className={styles.text}>{content.text}</p>
+                  {
+                    text.map((i) => {
+                      return (<p className={styles.text}>{i}</p>)
+                    })
+                  }
+                  {/* <p className={styles.text}>{content.text}</p> */}
                 </div>
               </div>
             }

@@ -23,7 +23,8 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isAdmin: localStorage.getItem('cpapr-token'),
+      isAdmin: false,
+      // isAdmin: localStorage.getItem('cpapr-token'),
       news: [],
     }
     this.checkIsAdmin = this.checkIsAdmin.bind(this);
