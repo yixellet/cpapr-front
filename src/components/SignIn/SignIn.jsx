@@ -1,12 +1,11 @@
 import React from "react";
-import { BASE_URL } from '../../content/config';
 import styles from './SignIn.module.css';
 
 class SignIn extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      login: null,
+      username: null,
       password: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,17 +14,8 @@ class SignIn extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { login, password } = this.state;
-    fetch(`${BASE_URL}/signin`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: login,
-        password: password,
-      })
-    })
+    const { username, password } = this.state;
+    this.props.api.signin(username, password)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -34,7 +24,7 @@ class SignIn extends React.Component {
         return json.then(Promise.reject.bind(Promise));
       })
       .then((data) => {
-        localStorage.setItem('cpapr-token', data.jwt);
+        localStorage.setItem('access', data.jwt);
         this.props.onSignIn();
         window.location.replace('/');
       })
@@ -61,7 +51,7 @@ class SignIn extends React.Component {
           <form className={styles.form} name="signin" onSubmit={this.handleSubmit}>
             <div className={styles.input_block}>
               <p className={styles.label}>Логин</p>
-              <input className={styles.input} id="login" type="text" name="login" required onChange={this.handleChange} />
+              <input className={styles.input} id="username" type="text" name="username" required onChange={this.handleChange} />
             </div>
             <div className={styles.input_block}>
               <p className={styles.label}>Пароль</p>

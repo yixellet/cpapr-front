@@ -14,18 +14,20 @@ import Footer from '../Footer/Footer';
 import SignIn from '../SignIn/SignIn';
 
 import { extractFullDate } from '../../utils/dateConverter';
+import Api from '../../utils/Api';
 import menu from '../../content/menu';
 import mainPageContent from '../../content/mainPage';
-import { BASE_URL_HOME, BASE_URL_WORK, NEWS_PAGESIZE } from '../../content/config';
+import { ERROR_MESSAGES, BASE_URL_WORK, NEWS_PAGESIZE } from '../../content/config';
+
+const api = new Api(BASE_URL_WORK, ERROR_MESSAGES);
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      isAdmin: false,
+      isAdmin: true,
       // isAdmin: localStorage.getItem('cpapr-token'),
-      news: [],
     }
     this.checkIsAdmin = this.checkIsAdmin.bind(this);
   }
@@ -34,30 +36,19 @@ class App extends React.Component {
     this.setState({ isAdmin: localStorage.getItem('cpapr-token') })
   }
 
-  componentDidMount() {
-    // fetch(`${BASE_URL_HOME}/news?page=1&count=10`)
-    fetch(`${BASE_URL_WORK}/news/?page=1`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        this.setState({ news: data.results })
-      })
-  }
-
   render() {
     return (
       <>
         <Header structure={menu.menu} isAdmin={this.state.isAdmin} onSignOut={this.checkIsAdmin} />
         <Switch>
           <Route exact path="/">
-            <Main dateConverter={extractFullDate} mainPageContent={mainPageContent} news={this.state.news}/>
+            <Main api={api} dateConverter={extractFullDate} mainPageContent={mainPageContent} />
           </Route>
           <Route exact path="/news">
-            <News url={BASE_URL_WORK} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
+            <News api={api} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
           </Route>
           <Route path="/news/:id">
-            <New dateConverter={extractFullDate} url={BASE_URL_WORK} />
+            <New dateConverter={extractFullDate} api={api} />
           </Route>
           <Route exact path="/docs">
             <Documents />
@@ -72,7 +63,7 @@ class App extends React.Component {
             <About blockList={menu.menu[5].sub}/>
           </Route>
           <Route exact path="/admin">
-            <SignIn onSignIn={this.checkIsAdmin} />
+            <SignIn api={api} onSignIn={this.checkIsAdmin} />
           </Route>
           <Route exact path="/404">
             <PageNotFound />

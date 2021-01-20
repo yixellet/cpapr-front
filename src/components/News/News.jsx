@@ -28,16 +28,18 @@ class News extends React.Component {
   componentDidMount() {
     const { currentPage } = this.state;
     this.setState({isFetching: true})
-    // fetch(`${this.props.url}/news?count=${this.props.pagesize}&page=${currentPage}`)
-    fetch(`${this.props.url}/news/?count=${this.props.pagesize}&page=${currentPage}`)
-      .then((res) => {
-        return res.json();
-      })
+    this.props.api.getNews(10, currentPage)
       .then((data) => {
         this.setState({
           isFetching: false,
           news: data,
         });
+      },
+      (error) => {
+        this.setState({
+          isFetching: false,
+          error
+        })
       })
   }
 
@@ -80,31 +82,38 @@ class News extends React.Component {
     })
   }
 
+  handleDelete
+
   render() {
-    const { news, isFetching, currentPage, isEditPopupOpened, popupType } = this.state;
-    return (
-      <main className={mainBlockStyles.background}>
-        <section className={mainBlockStyles.content}>
-          <PageTitle name="Новости"/>
-          {
-            this.props.isAdmin ?
-            <div className={styles.add_button_container}>
-              <button onClick={this.handleOpenAddPopup} className={styles.add_button}>Добавить новость</button>
-            </div> :
-            null
-          }
-          {
-            isFetching 
-            ? <p>FETCHING</p> 
-            : <>
-              <NewsList onOpenEditPopupButtonClick={this.handleOpenEditPopup} newsArray={news} isAdmin={this.props.isAdmin} />
-              <Paginator onPageChange={this.setCurrentPage} data={news} currentPage={currentPage} pagesize={this.props.pagesize} />
-            </>
-          }
-          <EditPopup onCloseButtonClick={this.handleCloseEditPopup} isOpened={isEditPopupOpened} type={popupType} />
-        </section>
-      </main>
-    )
+    const { news, isFetching, error, currentPage, isEditPopupOpened, popupType } = this.state;
+    let fetchNews;
+    if (isFetching) {
+      fetchNews = <p>Загрузка списка новостей...</p>
+    } else if (error) {
+      fetchNews = <p>При загрузке произошла ошибка</p>
+    } else {
+      fetchNews = <>
+        <NewsList onOpenEditPopupButtonClick={this.handleOpenEditPopup} newsArray={news} isAdmin={this.props.isAdmin} />
+        <Paginator onPageChange={this.setCurrentPage} data={news} currentPage={currentPage} pagesize={this.props.pagesize} />
+      </>
+    }
+      return (
+        <main className={mainBlockStyles.background}>
+          <section className={mainBlockStyles.content}>
+            <PageTitle name="Новости"/>
+            {
+              this.props.isAdmin ?
+              <div className={styles.add_button_container}>
+                <button onClick={this.handleOpenAddPopup} className={styles.add_button}>Добавить новость</button>
+              </div> :
+              null
+            }
+            {fetchNews}
+            <EditPopup api={this.props.api} onCloseButtonClick={this.handleCloseEditPopup} isOpened={isEditPopupOpened} type={popupType} />
+          </section>
+        </main>
+      )
+    
   }
 }
 

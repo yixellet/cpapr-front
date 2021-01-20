@@ -81,6 +81,7 @@
   text-align: center;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .label_input_file:hover {

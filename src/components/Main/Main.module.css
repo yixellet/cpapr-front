@@ -16,6 +16,12 @@
   display: flex;
 }
 
+.placeholder {
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 100;
+}
+
 @media screen and (max-width: calc(1146px + 30px)) {
   .content {
     padding-left: 15px;

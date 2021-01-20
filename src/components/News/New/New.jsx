@@ -18,20 +18,17 @@ class New extends React.Component {
 
   componentDidMount() {
     this.setState({isFetching: true})
-    fetch(`${this.props.url}/news/${this.props.match.params.id}/`)
-    .then((res) => {
-      if (res.status === 404) {
-        window.location.replace('/404');
-      }
-      return res.json();
-    })
-    .then((data) => {
-      this.setState({
-        isFetching: false,
-        content: data,
-        text: data.text.split('\n'),
-      });
-    })
+    this.props.api.getNewItem(this.props.match.params.id)
+      .then((data) => {
+        this.setState({
+          isFetching: false,
+          content: data,
+          text: data.text.split('\n'),
+        },
+        (error) => {
+          window.location.replace('/404');
+        });
+      })
   }
 
   render() {

@@ -46,7 +46,7 @@ const structure = [
       {
         id: '106',
         name: 'Порунцова Галина Александровна',
-        position: 'Секретарь',
+        position: 'Делопроизводитель',
         phoneNumber: '+7 (8512) 66-74-60',
         image: null,
       },
