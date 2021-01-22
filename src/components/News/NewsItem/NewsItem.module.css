@@ -89,12 +89,12 @@
 }
 
 .button_delete {
-  background-color: #07141c;
+  background-color: #551414;
   background-image: url('../../../images/trash.svg');
 }
 
 .button_delete:hover {
-  background-color: #35759c;
+  background-color: #b14747;
   background-image: url('../../../images/trash_hover.svg');
 }
 

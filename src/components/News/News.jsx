@@ -2,7 +2,9 @@ import React from "react";
 import PageTitle from '../PageTitle/PageTitle';
 import NewsList from './NewsList/NewsList';
 import Paginator from './Paginator/Paginator';
+import AddPopup from './AddPopup/AddPopup';
 import EditPopup from './EditPopup/EditPopup';
+import ConfirmDeletePopup from '../ConfirmDeletePopup/ConfirmDeletePopup';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 import styles from './News.module.css';
@@ -12,17 +14,30 @@ class News extends React.Component {
     super(props)
 
     this.state = {
+      isAddPopupOpened: false,
       isEditPopupOpened: false,
-      popupType: null,
+      isConfirmPopupOpened: false,
+      confirmPopupType: null,
       news: {},
+      results: [],
       isFetching: true,
       currentPage: 1,
+      newItemForDelete: null,
+      titleItemForDelete: null,
+      newItemForEdit:[],
     }
 
     this.setCurrentPage = this.setCurrentPage.bind(this);
     this.handleCloseEditPopup = this.handleCloseEditPopup.bind(this);
+    this.handleCloseAddPopup = this.handleCloseAddPopup.bind(this);
     this.handleOpenEditPopup = this.handleOpenEditPopup.bind(this);
     this.handleOpenAddPopup = this.handleOpenAddPopup.bind(this);
+    this.handleOpenConfirmDeletePopup = this.handleOpenConfirmDeletePopup.bind(this);
+    this.handleCloseConfirmDeletePopup = this.handleCloseConfirmDeletePopup.bind(this);
+    this.handleDeleteNewItem = this.handleDeleteNewItem.bind(this);
+    this.handleOpenOkPopup = this.handleOpenOkPopup.bind(this);
+    this.handleCreateNewItem = this.handleCreateNewItem.bind(this);
+    this.handleEditNewItem = this.handleEditNewItem.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +48,7 @@ class News extends React.Component {
         this.setState({
           isFetching: false,
           news: data,
+          results: data.results,
         });
       },
       (error) => {
@@ -46,34 +62,35 @@ class News extends React.Component {
   setCurrentPage(pageq) {
     this.setState(() => ({currentPage: pageq}))
     this.setState({isFetching: true})
-    fetch(`${this.props.url}/news/?count=${this.props.pagesize}&page=${pageq}`)
-      .then((res) => {
-        return res.json();
-      })
+    this.props.api.getNews(10, pageq)
       .then((data) => {
         this.setState({
           isFetching: false,
           news: data,
+          results: data.results,
         });
       })
   }
 
   handleOpenAddPopup() {
     this.setState({
-      isEditPopupOpened: true,
-    });
-    this.setState({
-      popupType: 'add',
+      isAddPopupOpened: true,
     });
   }
 
-  handleOpenEditPopup() {
+  handleOpenEditPopup(data) {
+    this.setState({
+      newItemForEdit: data,
+    });
     this.setState({
       isEditPopupOpened: true,
     });
+  }
+
+  handleCloseAddPopup() {
     this.setState({
-      popupType: 'edit',
-    });
+      isAddPopupOpened: false,
+    })
   }
 
   handleCloseEditPopup() {
@@ -82,10 +99,87 @@ class News extends React.Component {
     })
   }
 
-  handleDelete
+  handleOpenConfirmDeletePopup(id, title) {
+    this.setState({
+      isConfirmPopupOpened: true,
+      newItemForDelete: id,
+      titleItemForDelete: title,
+      confirmPopupType: 'confirm',
+    })
+  }
+
+  handleOpenOkPopup() {
+    this.setState({
+      isConfirmPopupOpened: true,
+      confirmPopupType: 'ok',
+    })
+  }
+
+  handleCloseConfirmDeletePopup() {
+    this.setState({
+      isConfirmPopupOpened: false,
+      newItemForDelete: null,
+    })
+  }
+
+  handleDeleteNewItem() {
+    this.props.api.deleteNewItem(this.state.newItemForDelete)
+      .then((res) => {
+        if (res.status === 204) {
+          this.handleOpenOkPopup();
+          const newArray = this.state.results;
+          const index = newArray.findIndex((element) => {
+            return element.id === this.state.newItemForDelete;
+          })
+          newArray.splice(index, 1)
+          this.setState({
+            results: newArray,
+          })
+        }
+      })
+  }
+
+  handleCreateNewItem(data) {
+    const newArray = this.state.results;
+    newArray.unshift(data);
+    this.setState({
+      results: newArray,
+    });
+    this.handleCloseAddPopup();
+  }
+
+  handleEditNewItem() {
+    const { currentPage } = this.state;
+    this.setState({isFetching: true})
+    this.props.api.getNews(10, currentPage)
+      .then((data) => {
+        this.setState({
+          isFetching: false,
+          news: data,
+          results: data.results,
+        });
+      },
+      (error) => {
+        this.setState({
+          isFetching: false,
+          error
+        })
+      })
+    this.handleCloseEditPopup();
+  }
 
   render() {
-    const { news, isFetching, error, currentPage, isEditPopupOpened, popupType } = this.state;
+    const { news, 
+      results, 
+      isFetching, 
+      error, 
+      currentPage, 
+      isAddPopupOpened, 
+      isEditPopupOpened, 
+      isConfirmPopupOpened, 
+      confirmPopupType, 
+      titleItemForDelete,
+      newItemForEdit } = this.state;
     let fetchNews;
     if (isFetching) {
       fetchNews = <p>Загрузка списка новостей...</p>
@@ -93,27 +187,45 @@ class News extends React.Component {
       fetchNews = <p>При загрузке произошла ошибка</p>
     } else {
       fetchNews = <>
-        <NewsList onOpenEditPopupButtonClick={this.handleOpenEditPopup} newsArray={news} isAdmin={this.props.isAdmin} />
+        <NewsList onDeleteButtonClick={this.handleOpenConfirmDeletePopup} onOpenEditPopupButtonClick={this.handleOpenEditPopup} newsArray={results} isAdmin={this.props.isAdmin} />
         <Paginator onPageChange={this.setCurrentPage} data={news} currentPage={currentPage} pagesize={this.props.pagesize} />
       </>
     }
-      return (
-        <main className={mainBlockStyles.background}>
-          <section className={mainBlockStyles.content}>
-            <PageTitle name="Новости"/>
-            {
-              this.props.isAdmin ?
-              <div className={styles.add_button_container}>
-                <button onClick={this.handleOpenAddPopup} className={styles.add_button}>Добавить новость</button>
-              </div> :
-              null
-            }
-            {fetchNews}
-            <EditPopup api={this.props.api} onCloseButtonClick={this.handleCloseEditPopup} isOpened={isEditPopupOpened} type={popupType} />
-          </section>
-        </main>
-      )
-    
+    return (
+      <main className={mainBlockStyles.background}>
+        <section className={mainBlockStyles.content}>
+          <PageTitle name="Новости"/>
+          {
+            this.props.isAdmin ?
+            <div className={styles.add_button_container}>
+              <button onClick={this.handleOpenAddPopup} className={styles.add_button}>Добавить новость</button>
+            </div> :
+            null
+          }
+          {fetchNews}
+          <AddPopup 
+            onSubmitClick={this.handleCreateNewItem} 
+            api={this.props.api} 
+            onCloseButtonClick={this.handleCloseAddPopup} 
+            isOpened={isAddPopupOpened} />
+
+          <EditPopup 
+            onSubmitClick={this.handleEditNewItem} 
+            api={this.props.api} 
+            onCloseButtonClick={this.handleCloseEditPopup} 
+            isOpened={isEditPopupOpened}
+            data={newItemForEdit} />
+
+          <ConfirmDeletePopup 
+            onCreateNewItem={this.handleCreateNewItem} 
+            title={titleItemForDelete} 
+            type={confirmPopupType} 
+            onDeleteButtonClick={this.handleDeleteNewItem} 
+            onCloseButtonClick={this.handleCloseConfirmDeletePopup} 
+            isOpened={isConfirmPopupOpened} />
+        </section>
+      </main>
+    )
   }
 }
 

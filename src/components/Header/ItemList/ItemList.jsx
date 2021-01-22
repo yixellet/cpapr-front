@@ -10,7 +10,7 @@ class ItemList extends React.Component {
   }
   
   handleSignOut() {
-    localStorage.removeItem('cpapr-token');
+    localStorage.removeItem('access');
     this.props.onSignOut();
   }
 

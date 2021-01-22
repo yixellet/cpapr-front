@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -26,14 +26,14 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isAdmin: true,
-      // isAdmin: localStorage.getItem('cpapr-token'),
+      // isAdmin: true,
+      isAdmin: localStorage.getItem('access'),
     }
     this.checkIsAdmin = this.checkIsAdmin.bind(this);
   }
 
   checkIsAdmin() {
-    this.setState({ isAdmin: localStorage.getItem('cpapr-token') })
+    this.setState({ isAdmin: localStorage.getItem('access') })
   }
 
   render() {
@@ -68,7 +68,6 @@ class App extends React.Component {
           <Route exact path="/404">
             <PageNotFound />
           </Route>
-          <Redirect to="/404" />
         </Switch>
         <Footer />
       </>

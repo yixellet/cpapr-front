@@ -1,4 +1,5 @@
-import leadImage from '../images/aerial-view-earth-exploration-flying-60132.jpg';
+// import leadImage from '../images/aerial-view-earth-exploration-flying-60132.jpg';
+import leadImage from '../images/volga.png';
 
 const mainPage = {
   lead: {

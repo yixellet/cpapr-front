@@ -27,7 +27,7 @@ class NewsItem extends React.Component {
               {this.props.isAdmin ? 
               <>
                 <button onClick={this.props.onOpenEditPopupButtonClick} className={`${classes.button} ${classes.button_edit}`}></button>
-                <button className={`${classes.button} ${classes.button_delete}`}></button>
+                <button onClick={this.props.onDeleteButtonClick} className={`${classes.button} ${classes.button_delete}`}></button>
               </> : 
               null }
             </div>

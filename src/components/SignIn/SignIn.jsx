@@ -16,15 +16,8 @@ class SignIn extends React.Component {
     event.preventDefault();
     const { username, password } = this.state;
     this.props.api.signin(username, password)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        const json = res.json();
-        return json.then(Promise.reject.bind(Promise));
-      })
       .then((data) => {
-        localStorage.setItem('access', data.jwt);
+        localStorage.setItem('access', data.access);
         this.props.onSignIn();
         window.location.replace('/');
       })

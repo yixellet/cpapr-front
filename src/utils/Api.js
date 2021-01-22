@@ -13,7 +13,7 @@ class Api {
   }
 
   signin(username, password) {
-    return fetch(`${this.baseUrl}/token`, {
+    return fetch(`${this.baseUrl}/token/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,13 +30,6 @@ class Api {
         const json = res.json();
         return json.then(Promise.reject.bind(Promise));
       })
-      .then((data) => {
-        console.log(data)
-        localStorage.setItem('access', data.access);
-      })
-      .catch((err) => {
-        throw err;
-      });
   }
 
   getNews(pageSize, currentPage) {
@@ -49,41 +42,51 @@ class Api {
   }
 
   getNewItem(id) {
-    console.log(id)
     return fetch(`${this.baseUrl}/news/${id}/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       }
     })
-    .then((res) => {
-      if (res.status === 404) {
-        window.location.replace('/404');
-      }
-      return res.json();
-    })
+    .then(this.parseResponse)
   }
 
-  createNewItem(title, text, image) {
+  createNewItem(data) {
     return fetch(`${this.baseUrl}/news/`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-      }
+        authorization: `Bearer ${localStorage.getItem('access')}`,
+      },
+      body:  data
+      
     })
-      .then(this.parseResponse)
+      .then((res) => {
+        return res.json()
+      })
+  }
+
+  editNewItem(data) {
+    return fetch(`${this.baseUrl}/news/`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('access')}`,
+      },
+      body:  data
+      
+    })
+      .then((res) => {
+        return res.json()
+      })
   }
 
   deleteNewItem(id) {
-    return fetch(`${this.baseUrl}/news/`, {
+    return fetch(`${this.baseUrl}/news/${id}/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': this.contentType,
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('access')}`,
       },
     })
-      .then(this.parseResponse);
   }
 }
 

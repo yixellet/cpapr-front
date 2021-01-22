@@ -19,15 +19,13 @@ class New extends React.Component {
   componentDidMount() {
     this.setState({isFetching: true})
     this.props.api.getNewItem(this.props.match.params.id)
-      .then((data) => {
+      .then(
+        (data) => {
         this.setState({
           isFetching: false,
           content: data,
           text: data.text.split('\n'),
-        },
-        (error) => {
-          window.location.replace('/404');
-        });
+        })
       })
   }
 
@@ -45,11 +43,10 @@ class New extends React.Component {
                   <h2 className={styles.title}>{content.title}</h2>
                   <p className={styles.date}>{this.props.dateConverter(content.date_publisher)}</p>
                   {
-                    text.map((i) => {
-                      return (<p className={styles.text}>{i}</p>)
+                    text.map((i, index) => {
+                      return (<p className={styles.text} key={index}>{i}</p>)
                     })
                   }
-                  {/* <p className={styles.text}>{content.text}</p> */}
                 </div>
               </div>
             }
