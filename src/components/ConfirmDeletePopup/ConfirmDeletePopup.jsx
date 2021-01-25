@@ -4,7 +4,7 @@ import styles from './ConfirmDeletePopup.module.css';
 
 class ConfirmDeletePopup extends React.Component {
   render() {
-    const { isOpened, onCloseButtonClick, onDeleteButtonClick, title, type } = this.props;
+    const { onCloseButtonClick, onDeleteButtonClick, title, type } = this.props;
     let content;
     if (type === 'confirm') {
       content = <>
@@ -20,7 +20,7 @@ class ConfirmDeletePopup extends React.Component {
       </> 
     }
     return (
-      <div className={isOpened ? `${styles.container} ${styles.container_opened}` : styles.container}>
+      <div className={`${styles.container} ${styles.container_opened}`}>
         <div className={styles.popup}>
           <button className={styles.close_button} onClick={onCloseButtonClick} />
           {content}

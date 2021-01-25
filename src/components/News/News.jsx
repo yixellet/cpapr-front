@@ -24,7 +24,10 @@ class News extends React.Component {
       currentPage: 1,
       newItemForDelete: null,
       titleItemForDelete: null,
-      newItemForEdit:[],
+      newItemForEdit: null,
+      titleForEdit: null,
+      textForEdit: null,
+      imageForEdit: null,
     }
 
     this.setCurrentPage = this.setCurrentPage.bind(this);
@@ -78,11 +81,12 @@ class News extends React.Component {
     });
   }
 
-  handleOpenEditPopup(data) {
+  handleOpenEditPopup(id, title, text, image) {
     this.setState({
-      newItemForEdit: data,
-    });
-    this.setState({
+      newItemForEdit: id,
+      titleForEdit: title,
+      textForEdit: text,
+      imageForEdit: image,
       isEditPopupOpened: true,
     });
   }
@@ -169,17 +173,18 @@ class News extends React.Component {
   }
 
   render() {
-    const { news, 
+    const { 
+      news, 
       results, 
       isFetching, 
       error, 
       currentPage, 
-      isAddPopupOpened, 
-      isEditPopupOpened, 
-      isConfirmPopupOpened, 
       confirmPopupType, 
       titleItemForDelete,
-      newItemForEdit } = this.state;
+      newItemForEdit,
+      titleForEdit,
+      textForEdit,
+      imageForEdit } = this.state;
     let fetchNews;
     if (isFetching) {
       fetchNews = <p>Загрузка списка новостей...</p>
@@ -187,8 +192,16 @@ class News extends React.Component {
       fetchNews = <p>При загрузке произошла ошибка</p>
     } else {
       fetchNews = <>
-        <NewsList onDeleteButtonClick={this.handleOpenConfirmDeletePopup} onOpenEditPopupButtonClick={this.handleOpenEditPopup} newsArray={results} isAdmin={this.props.isAdmin} />
-        <Paginator onPageChange={this.setCurrentPage} data={news} currentPage={currentPage} pagesize={this.props.pagesize} />
+        <NewsList 
+          onDeleteButtonClick={this.handleOpenConfirmDeletePopup} 
+          onOpenEditPopupButtonClick={this.handleOpenEditPopup} 
+          newsArray={results} 
+          isAdmin={this.props.isAdmin} />
+        <Paginator 
+          onPageChange={this.setCurrentPage} 
+          data={news} 
+          currentPage={currentPage} 
+          pagesize={this.props.pagesize} />
       </>
     }
     return (
@@ -203,26 +216,34 @@ class News extends React.Component {
             null
           }
           {fetchNews}
-          <AddPopup 
-            onSubmitClick={this.handleCreateNewItem} 
-            api={this.props.api} 
-            onCloseButtonClick={this.handleCloseAddPopup} 
-            isOpened={isAddPopupOpened} />
-
-          <EditPopup 
-            onSubmitClick={this.handleEditNewItem} 
-            api={this.props.api} 
-            onCloseButtonClick={this.handleCloseEditPopup} 
-            isOpened={isEditPopupOpened}
-            data={newItemForEdit} />
-
-          <ConfirmDeletePopup 
-            onCreateNewItem={this.handleCreateNewItem} 
-            title={titleItemForDelete} 
-            type={confirmPopupType} 
-            onDeleteButtonClick={this.handleDeleteNewItem} 
-            onCloseButtonClick={this.handleCloseConfirmDeletePopup} 
-            isOpened={isConfirmPopupOpened} />
+          {
+            this.state.isAddPopupOpened &&
+            <AddPopup 
+              onSubmitClick={this.handleCreateNewItem} 
+              api={this.props.api} 
+              onCloseButtonClick={this.handleCloseAddPopup} />
+          }
+          {
+            this.state.isEditPopupOpened && 
+            <EditPopup 
+              onSubmitClick={this.handleEditNewItem} 
+              api={this.props.api} 
+              onCloseButtonClick={this.handleCloseEditPopup} 
+              id={newItemForEdit}
+              title={titleForEdit}
+              text={textForEdit}
+              image={imageForEdit}
+              key={newItemForEdit} />
+          }
+          {
+            this.state.isConfirmPopupOpened &&
+            <ConfirmDeletePopup 
+              onCreateNewItem={this.handleCreateNewItem} 
+              title={titleItemForDelete} 
+              type={confirmPopupType} 
+              onDeleteButtonClick={this.handleDeleteNewItem} 
+              onCloseButtonClick={this.handleCloseConfirmDeletePopup} />
+          }
         </section>
       </main>
     )

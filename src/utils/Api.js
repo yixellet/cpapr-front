@@ -60,13 +60,11 @@ class Api {
       body:  data
       
     })
-      .then((res) => {
-        return res.json()
-      })
+      .then((res) => this.parseResponse(res))
   }
 
-  editNewItem(data) {
-    return fetch(`${this.baseUrl}/news/`, {
+  editNewItem(id, data) {
+    return fetch(`${this.baseUrl}/news/${id}/`, {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -74,9 +72,7 @@ class Api {
       body:  data
       
     })
-      .then((res) => {
-        return res.json()
-      })
+    .then((res) => this.parseResponse(res))
   }
 
   deleteNewItem(id) {
@@ -87,6 +83,15 @@ class Api {
         authorization: `Bearer ${localStorage.getItem('access')}`,
       },
     })
+  }
+
+  getDocs() {
+    return fetch(`${this.baseUrl}/documents/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }})
+      .then(this.parseResponse)
   }
 }
 

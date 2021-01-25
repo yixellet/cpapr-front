@@ -54,6 +54,58 @@
   margin-bottom: 30px;
 }
 
+.image_block {
+  position: relative;
+}
+
+.button_block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+}
+
+.image_button {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid rgb(96, 124, 133);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  padding: 0;
+  text-align: center;
+  vertical-align:top ;
+  font-size: 16px;
+}
+
+.add_image_button, .change_image_button {
+  background-color: #07141c;
+}
+
+.change_image_button {
+  background-image: url('../../../images/edit.svg');
+  background-size: 12px;
+}
+
+.add_image_button:hover, .change_image_button:hover {
+  background-color: #35759c;
+}
+
+.delete_image_button {
+  background-color: #551414;
+  background-image: url('../../../images/trash.svg');
+  background-size: 15px;
+  margin-left: 5px;
+}
+
+.delete_image_button:hover {
+  background-color: #b14747;
+}
+
 .title_block {
   display: flex;
   flex-direction: column;
@@ -75,13 +127,11 @@
 .label_input_file {
   width: 100px;
   height: 100px;
-  border: 2px dashed #557b92;
   border-radius: 5px;
   transition:border 300ms ease;
   text-align: center;
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .label_input_file_selected {
@@ -90,14 +140,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-}
-
-.label_input_file:hover {
-  border: 2px solid #07141c;
-}
-
-.label_input_file:hover > .span {  
-  color: #07141c;
 }
 
 .span {
@@ -144,6 +186,16 @@
   margin-bottom: 30px;
 }
 
+.submit_error_block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
 .submit {
   height: 40px;
   width: 200px;
@@ -160,4 +212,12 @@
 
 .submit:hover {
     background-color: #11374e;
+}
+
+.error {
+  width: 400px;
+  font-family: Roboto;
+  color: rgb(107, 21, 21);
+  font-size: 12px;
+  margin: 0 0 0 20px;
 }

@@ -9,6 +9,7 @@ class EditPopup extends React.Component {
       title: null,
       text: null,
       image: null,
+      error: null,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -37,16 +38,16 @@ class EditPopup extends React.Component {
         this.props.onSubmitClick(data)
       })
       .catch((error) => {
-        alert(error)
+        this.setState({error: error})
       })
       this.allForm.current.reset();
   }
 
 
   render() {
-    const { isOpened, onCloseButtonClick } = this.props;
+    const { onCloseButtonClick } = this.props;
     return (
-      <div className={isOpened ? `${styles.container} ${styles.container_opened}` : styles.container}>
+      <div className={`${styles.container} ${styles.container_opened}`}>
         <div className={styles.popup}>
           <button className={styles.close_button} onClick={onCloseButtonClick} />
           <h3 className={styles.title}>Добавить новость</h3>
@@ -67,7 +68,14 @@ class EditPopup extends React.Component {
             </div>
             <label className={styles.label}>Текст</label>
             <textarea minLength='10' className={styles.textarea} name="text" type="text" rows="4" onChange={this.handleInputChange} />
-            <input className={styles.submit} name="submit" type="submit" value="Применить" />
+            <div className={styles.submit_error_block}>
+              <input className={styles.submit} name="submit" type="submit" value="Применить" />
+              {
+                this.state.error ?
+                <p className={styles.error}>При добавлении новости произошла ошибка. Скорее всего, дело в изображении. Попробуйте прикрепить другое фото.</p> :
+                null
+              }
+            </div>
           </form>
         </div>
       </div>

@@ -44,14 +44,14 @@ class App extends React.Component {
           <Route exact path="/">
             <Main api={api} dateConverter={extractFullDate} mainPageContent={mainPageContent} />
           </Route>
-          <Route exact path="/news">
+          <Route exact path="/news/">
             <News api={api} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
           </Route>
-          <Route path="/news/:id">
+          <Route path="/news/:id/">
             <New dateConverter={extractFullDate} api={api} />
           </Route>
           <Route exact path="/docs">
-            <Documents />
+            <Documents api={api} />
           </Route>
           <Route path="/work">
             <Work blockList={menu.menu[3].sub}/>
@@ -62,7 +62,7 @@ class App extends React.Component {
           <Route path="/about">
             <About blockList={menu.menu[5].sub}/>
           </Route>
-          <Route exact path="/admin">
+          <Route exact path="/administration">
             <SignIn api={api} onSignIn={this.checkIsAdmin} />
           </Route>
           <Route exact path="/404">

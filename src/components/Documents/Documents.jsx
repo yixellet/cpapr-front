@@ -16,6 +16,7 @@ class  Documents extends React.Component {
     this.getUniqueValues = this.getUniqueValues.bind(this);
 
     this.state = {
+      isFetching: false,
       isMenuOpen: false,
       documents: [],
       documentTypes: [],
@@ -24,12 +25,11 @@ class  Documents extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://172.17.13.51:8000/api/v1/documents/")
-      .then((res) => {
-        return res.json();
-      })
+    this.setState({isFetching: true})
+    this.props.api.getDocs()
       .then((data) => {
         this.setState({
+          isFetching: false,
           documents: data,
           documentTypes: this.getUniqueValues(data),
         })
@@ -76,6 +76,10 @@ class  Documents extends React.Component {
         <section className={mainBlockStyles.content}>
           <PageTitle name="Документы" />
           <div className={documentsStyles.body}>
+            {
+              this.state.isFetching ?
+              <p>Загрузка документов</p> :
+            
             <div className={this.state.isMenuOpen ? `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_open}` : `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_closed}`}>
               <button onClick={this.handleSideMenuOpenOrClose} className={sideMenuStyles.button}/>
               <ul className={sideMenuStyles.list}>
@@ -85,7 +89,7 @@ class  Documents extends React.Component {
                   })
                 }
               </ul>
-            </div>
+            </div> }
             <DocumentsList list={this.chooseDocumentType(activeDocumentType)} />
           </div>
         </section>

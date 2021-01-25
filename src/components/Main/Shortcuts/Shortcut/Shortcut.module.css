@@ -3,6 +3,7 @@
   height: 200px;
   list-style-type: none;
   margin-bottom: 30px;
+  z-index: 2;
 }
 
 .shortcut__link {

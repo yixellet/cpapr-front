@@ -16,3 +16,19 @@
 .link:hover {
   color: rgb(97, 179, 238);
 }
+
+.type {
+  font-family: 'Roboto';
+  font-size: 11px;
+  background-color: #1a3c52;
+  color: #fff;
+  padding: 1px 3px;
+  border-radius: 3px;
+  margin-left: 5px;
+  position: relative;
+  top: -2px;
+}
+
+.link:hover > .type {
+  background-color:rgb(97, 179, 238);
+}
