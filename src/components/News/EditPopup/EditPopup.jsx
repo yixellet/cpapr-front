@@ -18,6 +18,7 @@ class EditPopup extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fileAdd = React.createRef();
     this.allForm = React.createRef();
+    console.log(this.allForm)
   }
 
   handleInputChange(event) {
@@ -33,6 +34,7 @@ class EditPopup extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(this.allForm.current);
+
     this.props.api.editNewItem(this.state.id, formData)
       .then((data) => {
         this.props.onSubmitClick(data)
@@ -51,19 +53,7 @@ class EditPopup extends React.Component {
           <h3 className={styles.title}>Редактировать новость</h3>
           <form method="post" className={styles.form} name="editform" onSubmit={this.handleSubmit} ref={this.allForm}>
             <div className={styles.image_title_block}>
-              <div className={styles.image_block}>
-                <img className={styles.label_input_file} alt="illustration" src={this.state.image ? this.state.image : placeHolder}/>
-                <div className={styles.button_block}>
-                {
-                  this.state.image ?
-                  <>
-                    <button className={`${styles.change_image_button} ${styles.image_button}`} />
-                    <button className={`${styles.delete_image_button} ${styles.image_button}`} />
-                  </> :
-                  <input className={`${styles.add_image_button} ${styles.image_button}`} name="image" type="file" ref={this.fileAdd} accept="image/*,image/jpeg" onChange={this.handleInputChange} />
-                }
-                </div>
-              </div>
+              <img className={styles.image} alt="illustration" src={this.state.image ? this.state.image : placeHolder}/>
               <div className={styles.title_block}>
                 <label className={styles.label}>Заголовок</label>
                 <textarea value={this.state.title} minLength='10' className={styles.input_title} name="title" type="text" onChange={this.handleInputChange} />

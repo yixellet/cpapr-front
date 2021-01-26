@@ -93,6 +93,30 @@ class Api {
       }})
       .then(this.parseResponse)
   }
+
+  deleteImage(id) {
+    const formData = new FormData();
+    formData.append("image", "")
+    return fetch(`${this.baseUrl}/news/${id}/`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('access')}`,
+      },
+      body: formData
+    })
+    .then((res) => this.parseResponse(res))
+  }
+
+  addImage(id, data) {
+    return fetch(`${this.baseUrl}/news/${id}/`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('access')}`,
+      },
+      body: data
+    })
+    .then((res) => this.parseResponse(res))
+  }
 }
 
 export default Api;

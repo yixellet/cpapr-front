@@ -35,6 +35,11 @@
   color: #35759c;
 }
 
+.image_block {
+  margin: 0;
+  position: relative;
+}
+
 .image {
   width: 165px;
   height: 165px;
@@ -48,6 +53,44 @@
   height: 165px;
   margin-right: 20px;
   background-color: #f1f1f1;
+}
+
+.button_block {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+}
+
+.image_button {
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.add_image_button, .change_image_button {
+  background-color: #07141c;
+  background-image: url('../../../images/edit.svg');
+  background-size: 16px;
+}
+
+.add_image_button:hover, .change_image_button:hover {
+  background-color: #35759c;
+}
+
+.delete_image_button {
+  margin-left: 5px;
+  background-color: #551414;
+  background-image: url('../../../images/trash.svg');
+  background-size: 20px;
+}
+
+.delete_image_button:hover {
+  background-color: #b14747;
 }
 
 .date {

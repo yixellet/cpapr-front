@@ -17,7 +17,10 @@ class NewsList extends React.Component {
             path={`news/${item.id}`} 
             key={item.id}
             onOpenEditPopupButtonClick={() => this.props.onOpenEditPopupButtonClick(item.id, item.title, item.text, item.image)}
-            onDeleteButtonClick={() => this.props.onDeleteButtonClick(item.id, item.title)} />
+            onDeleteButtonClick={() => this.props.onDeleteButtonClick(item.id, item.title)}
+            onDeleteImageButtonClick={() => this.props.onDeleteImageButtonClick(item.id, item.image)} 
+            onAddImageButtonClick={() => this.props.onAddImageButtonClick(item.id)}
+            onLinkClick={this.props.onLinkClick} />
         })}
       </ul>
     )

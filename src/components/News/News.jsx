@@ -5,6 +5,8 @@ import Paginator from './Paginator/Paginator';
 import AddPopup from './AddPopup/AddPopup';
 import EditPopup from './EditPopup/EditPopup';
 import ConfirmDeletePopup from '../ConfirmDeletePopup/ConfirmDeletePopup';
+import ConfirmImageDeletePopup from '../ConfirmImageDeletePopup/ConfirmImageDeletePopup';
+import AddImagePopup from '../AddImagePopup/AddImagePopup';
 
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 import styles from './News.module.css';
@@ -17,17 +19,23 @@ class News extends React.Component {
       isAddPopupOpened: false,
       isEditPopupOpened: false,
       isConfirmPopupOpened: false,
+      isConfirmImagePopupOpened: false,
+      isAddImagePopupOpened: false,
       confirmPopupType: null,
       news: {},
       results: [],
       isFetching: true,
-      currentPage: 1,
+      currentPage: sessionStorage.getItem('currentPage') && 1,
       newItemForDelete: null,
       titleItemForDelete: null,
       newItemForEdit: null,
       titleForEdit: null,
       textForEdit: null,
       imageForEdit: null,
+      idForImageDelete: null,
+      imageForDelete: null,
+      newItemForAddingImage: null,
+      scrollPosition: null,
     }
 
     this.setCurrentPage = this.setCurrentPage.bind(this);
@@ -41,6 +49,13 @@ class News extends React.Component {
     this.handleOpenOkPopup = this.handleOpenOkPopup.bind(this);
     this.handleCreateNewItem = this.handleCreateNewItem.bind(this);
     this.handleEditNewItem = this.handleEditNewItem.bind(this);
+    this.handleOpenConfirmImageDeletePopup = this.handleOpenConfirmImageDeletePopup.bind(this);
+    this.handleCloseConfirmImageDeletePopup = this.handleCloseConfirmImageDeletePopup.bind(this);
+    this.handleDeleteImage = this.handleDeleteImage.bind(this);
+    this.handleOpenAddImagePopup = this.handleOpenAddImagePopup.bind(this);
+    this.handleCloseAddImageDeletePopup = this.handleCloseAddImageDeletePopup.bind(this);
+    this.handleAddImage = this.handleAddImage.bind(this);
+    this.handleClickOnLink = this.handleClickOnLink.bind(this);
   }
 
   componentDidMount() {
@@ -112,6 +127,15 @@ class News extends React.Component {
     })
   }
 
+  handleOpenConfirmImageDeletePopup(id, image) {
+    this.setState({
+      isConfirmImagePopupOpened: true,
+      idForImageDelete: id,
+      imageForDelete: image,
+      confirmPopupType: 'confirm',
+    })
+  }
+
   handleOpenOkPopup() {
     this.setState({
       isConfirmPopupOpened: true,
@@ -123,6 +147,15 @@ class News extends React.Component {
     this.setState({
       isConfirmPopupOpened: false,
       newItemForDelete: null,
+      titleItemForDelete: null,
+    })
+  }
+
+  handleCloseConfirmImageDeletePopup() {
+    this.setState({
+      isConfirmImagePopupOpened: false,
+      idForImageDelete: null,
+      imageForDelete: null,
     })
   }
 
@@ -141,6 +174,29 @@ class News extends React.Component {
           })
         }
       })
+  }
+
+  handleDeleteImage() {
+    this.props.api.deleteImage(this.state.idForImageDelete)
+      .then((res) => {
+        const { currentPage } = this.state;
+        this.setState({isFetching: true})
+        this.props.api.getNews(10, currentPage)
+          .then((data) => {
+            this.setState({
+              isFetching: false,
+              news: data,
+              results: data.results,
+            });
+          },
+          (error) => {
+            this.setState({
+              isFetching: false,
+              error
+            })
+          })
+      })
+    this.handleCloseConfirmImageDeletePopup()
   }
 
   handleCreateNewItem(data) {
@@ -172,6 +228,45 @@ class News extends React.Component {
     this.handleCloseEditPopup();
   }
 
+  handleOpenAddImagePopup(id) {
+    this.setState({
+      isAddImagePopupOpened: true,
+      newItemForAddingImage: id,
+    })
+  }
+
+  handleCloseAddImageDeletePopup() {
+    this.setState({
+      isAddImagePopupOpened: false,
+      newItemForAddingImage: null,
+    })
+  }
+
+  handleAddImage() {
+    this.handleCloseAddImageDeletePopup();
+    const { currentPage } = this.state;
+    this.setState({isFetching: true})
+    this.props.api.getNews(10, currentPage)
+      .then((data) => {
+        this.setState({
+          isFetching: false,
+          news: data,
+          results: data.results,
+        });
+      },
+      (error) => {
+        this.setState({
+          isFetching: false,
+          error
+        })
+      })
+  }
+
+  handleClickOnLink() {
+    sessionStorage.setItem('currentPage', this.state.currentPage);
+    sessionStorage.setItem('scroll', window.scrollY);
+  }
+
   render() {
     const { 
       news, 
@@ -184,7 +279,9 @@ class News extends React.Component {
       newItemForEdit,
       titleForEdit,
       textForEdit,
-      imageForEdit } = this.state;
+      imageForEdit,
+      imageForDelete,
+      newItemForAddingImage } = this.state;
     let fetchNews;
     if (isFetching) {
       fetchNews = <p>Загрузка списка новостей...</p>
@@ -194,9 +291,12 @@ class News extends React.Component {
       fetchNews = <>
         <NewsList 
           onDeleteButtonClick={this.handleOpenConfirmDeletePopup} 
-          onOpenEditPopupButtonClick={this.handleOpenEditPopup} 
+          onOpenEditPopupButtonClick={this.handleOpenEditPopup}
+          onDeleteImageButtonClick={this.handleOpenConfirmImageDeletePopup} 
+          onAddImageButtonClick={this.handleOpenAddImagePopup}
           newsArray={results} 
-          isAdmin={this.props.isAdmin} />
+          isAdmin={this.props.isAdmin}
+          onLinkClick={this.handleClickOnLink} />
         <Paginator 
           onPageChange={this.setCurrentPage} 
           data={news} 
@@ -243,6 +343,23 @@ class News extends React.Component {
               type={confirmPopupType} 
               onDeleteButtonClick={this.handleDeleteNewItem} 
               onCloseButtonClick={this.handleCloseConfirmDeletePopup} />
+          }
+          {
+            this.state.isConfirmImagePopupOpened &&
+            <ConfirmImageDeletePopup 
+              onCreateNewItem={this.handleCreateNewItem} 
+              image={imageForDelete} 
+              type={confirmPopupType} 
+              onDeleteButtonClick={this.handleDeleteImage} 
+              onCloseButtonClick={this.handleCloseConfirmImageDeletePopup} />
+          }
+          {
+            this.state.isAddImagePopupOpened &&
+            <AddImagePopup 
+              onSubmitClick={this.handleAddImage} 
+              api={this.props.api} 
+              onCloseButtonClick={this.handleCloseAddImageDeletePopup} 
+              newItemForAddingImage={newItemForAddingImage} />
           }
         </section>
       </main>

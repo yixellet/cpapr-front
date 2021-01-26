@@ -19,14 +19,31 @@ class NewsItem extends React.Component {
   render() {
     return (
       <li className={classes.newsitem}>
-        <img className={classes.image} alt="illustration" src={this.props.image ? this.props.image : placeHolder}/>
+        <div className={classes.image_block}>
+          <img className={classes.image} alt={this.props.title} src={this.props.image ? this.props.image : placeHolder}/>
+          {
+            this.props.isAdmin ?
+            <div className={classes.button_block}>
+              {
+                this.props.image ?
+                <>
+                  <button onClick={this.props.onAddImageButtonClick} className={`${classes.image_button} ${classes.change_image_button}`} />
+                  <button onClick={this.props.onDeleteImageButtonClick} className={`${classes.image_button} ${classes.delete_image_button}`} />
+                </> :
+                <button onClick={this.props.onAddImageButtonClick} className={`${classes.image_button} ${classes.add_image_button}`} />
+              }
+            </div> :
+            null
+          }
+        </div>
         <div className={classes.text}>
           <div className={classes.title_block}>
-            <Link to={this.props.path} className={classes.title}>{this.props.title}</Link>
+            <Link onClick={this.props.onLinkClick} to={this.props.path} className={classes.title}>{this.props.title}</Link>
             <div className={classes.links_block}>
               {this.props.isAdmin ? 
               <>
-                <button onClick={this.props.onOpenEditPopupButtonClick} className={`${classes.button} ${classes.button_edit}`}></button>
+                <button onClick={this.props.onOpenEditPopupButtonClick} 
+                  className={`${classes.button} ${classes.button_edit}`}></button>
                 <button onClick={this.props.onDeleteButtonClick} className={`${classes.button} ${classes.button_delete}`}></button>
               </> : 
               null }

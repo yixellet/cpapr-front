@@ -40,6 +40,7 @@ class New extends React.Component {
               <div className={styles.container}>
                 {content.image ? <img className={styles.image} alt="illustration" src={content.image}/> : null }
                 <div className={styles.textContent}>
+                  <p onClick={this.props.onBackClick}>&larr; Назад к списку</p>
                   <h2 className={styles.title}>{content.title}</h2>
                   <p className={styles.date}>{this.props.dateConverter(content.date_publisher)}</p>
                   {
