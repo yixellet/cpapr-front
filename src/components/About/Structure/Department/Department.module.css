@@ -1,0 +1,24 @@
+.department {
+  width: 100%;
+  padding: 0;
+  margin: 0 0 70px;
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 700;
+  color: #07141c;
+  margin-bottom: 30px;
+}
+
+.employeeList {
+  width: 100%;
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.employeeListItem {
+  margin: 0 0 40px;
+}

@@ -1,0 +1,12 @@
+.footer__cgt{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 600px;
+}
+
+@media screen and (max-width: 720px) {
+  .footer__cgt {
+    width: auto;
+  }
+}

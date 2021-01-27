@@ -1,0 +1,13 @@
+.footer__content {
+  max-width: 1146px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  line-height: 1.4;
+  color: white;
+  font-weight: normal;
+}

@@ -1,0 +1,202 @@
+.newsitem {
+  list-style-type: none;
+  display: flex;
+  margin: 0 0 30px 0;
+  max-width: 754px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.newsitem:last-of-type .text {
+  border-bottom: none;
+  padding-bottom: 0px;  
+}
+
+.title_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Roboto Slab';
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #003353;
+  cursor: pointer;
+  transition: color 300ms ease;
+}
+
+.title:hover {
+  color: #35759c;
+}
+
+.image_block {
+  margin: 0;
+  position: relative;
+}
+
+.image {
+  width: 165px;
+  height: 165px;
+  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image_placeholder {
+  width: 165px;
+  height: 165px;
+  margin-right: 20px;
+  background-color: #f1f1f1;
+}
+
+.button_block {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+}
+
+.image_button {
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.add_image_button, .change_image_button {
+  background-color: #07141c;
+  background-image: url('../../../images/edit.svg');
+  background-size: 16px;
+}
+
+.add_image_button:hover, .change_image_button:hover {
+  background-color: #35759c;
+}
+
+.delete_image_button {
+  margin-left: 5px;
+  background-color: #551414;
+  background-image: url('../../../images/trash.svg');
+  background-size: 20px;
+}
+
+.delete_image_button:hover {
+  background-color: #b14747;
+}
+
+.date {
+  font-size: 11px;
+  color: rgb(41, 41, 41);
+  margin-top: 0;
+}
+
+.text {
+  width: 100%;
+  margin: 0;
+  font-family: "Roboto";
+  line-height: 1.5;
+  border-bottom: solid #dadada 1px;
+  padding-bottom: 15px;  
+}
+
+.content {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.links_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  transition: background-image 300ms ease;
+}
+
+.button_delete {
+  background-color: #551414;
+  background-image: url('../../../images/trash.svg');
+}
+
+.button_delete:hover {
+  background-color: #b14747;
+  background-image: url('../../../images/trash_hover.svg');
+}
+
+.button_edit {
+  background-color: #07141c;
+  background-image: url('../../../images/edit.svg');
+}
+
+.button_edit:hover {
+  background-color: #35759c;
+  background-image: url('../../../images/edit_hover.svg');
+}
+
+@media screen and (max-width: 768px) {
+  .newsitem {
+    width: 100%;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #879eac;
+  }
+
+  .image, .image_placeholder {
+    min-width: 150px;
+    height: 150px;
+    margin: 5px 15px 5px 5px;
+  }
+
+  .title {
+    margin-top: 10px;
+  }
+
+  .text {
+    border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .newsitem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image, .image_placeholder {
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .text {
+    margin: 10px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .content {
+    width: calc(100% - 30px);
+  }
+}

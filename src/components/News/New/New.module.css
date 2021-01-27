@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+.image {
+    width:870px;
+    margin-bottom: 40px;
+}
+
+.textContent {
+    width: 870px;
+}
+
+.title {
+  font-family: 'Roboto Slab';
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 11px;
+  color: rgb(41, 41, 41);
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.text {
+  width: 100%;
+  margin: 0;
+  font-family: "Roboto";
+  line-height: 1.5;
+  padding-bottom: 15px;
+  font-size: 16px;
+  font-weight: 400;  
+}
+
+@media screen and (max-width: calc(870px + 60px)) {
+  .image, .textContent {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: 0px;
+  }
+
+  .image {
+    width: 100%;
+  }
+}

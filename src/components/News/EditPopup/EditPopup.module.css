@@ -1,0 +1,151 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.445);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.container_opened {
+  display: flex;
+}
+
+.popup {
+  min-width: 700px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #252525;
+  position: relative;
+  padding:10px;
+}
+
+.close_button {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background-color: #551414;
+  background-image: url('../../../images/close.svg');
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #272727;
+  transition: background-color 300ms ease;
+}
+
+.close_button:hover {
+  background-color: #b14747;
+  background-image: url('../../../images/close_hover.svg');
+}
+
+.image_title_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.title_block {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 20px 20px 30px;
+}
+
+.input_title {
+  width: 530px;
+  height: 70px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  transition:border 300ms ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.label_input_file_selected {
+  border: 2px dashed #64c052;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.label {
+  margin-bottom: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.input {
+  margin-bottom: 30px;
+  height: 30px;
+}
+
+.textarea {
+  height: 400px;
+  width: 100%;
+  margin-bottom:30px;
+}
+
+.submit_error_block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.submit {
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #07141c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.submit:hover {
+    background-color: #11374e;
+}
+
+.error {
+  width: 400px;
+  font-family: Roboto;
+  color: rgb(107, 21, 21);
+  font-size: 12px;
+  margin: 0 0 0 20px;
+}
