@@ -117,6 +117,15 @@ class Api {
     })
     .then((res) => this.parseResponse(res))
   }
+
+  getStructure() {
+    return fetch(`${this.baseUrl}/structure/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }})
+      .then(this.parseResponse)
+  }
 }
 
 export default Api;

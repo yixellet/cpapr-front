@@ -14,13 +14,14 @@ class  Documents extends React.Component {
 
     this.handleSideMenuOpenOrClose = this.handleSideMenuOpenOrClose.bind(this);
     this.getUniqueValues = this.getUniqueValues.bind(this);
+    this.renderContent = this.renderContent.bind(this)
 
     this.state = {
-      isFetching: false,
+      isFetching: true,
       isMenuOpen: false,
       documents: [],
       documentTypes: [],
-      activeDocumentType: null,
+      activeDocumentType: 1,
     }
   }
 
@@ -29,39 +30,27 @@ class  Documents extends React.Component {
     this.props.api.getDocs()
       .then((data) => {
         this.setState({
-          isFetching: false,
           documents: data,
           documentTypes: this.getUniqueValues(data),
-        })
-        this.setState({
-          activeDocumentType: this.state.documentTypes[0].type,
+          isFetching: false,
         })
       })
   }
 
   getUniqueValues(arr) {
     let result = [];
-    let objResult = [];
     for (let obj of arr) {
-      if (!result.includes(obj.docType)) {
-        result.push(obj.docType);
-        objResult.push({type: obj.docType, typeName: obj.docTypeName})
-
-      }
+      result.push({id: obj.id, name: obj.name})
     }
-    return objResult;
+    return result;
 
-  }
-
-  chooseDocumentType(type) {
-    const res = this.state.documents.filter((doc) => {
-      return (doc.docType === type)
-    })
-    return res
   }
 
   handleChangeDocType(docType) {
-    this.setState({ activeDocumentType: docType.type, isMenuOpen: false })
+    this.setState({
+      activeDocumentType: docType,
+      isMenuOpen: false
+    })
   }
 
   handleSideMenuOpenOrClose() {
@@ -69,8 +58,26 @@ class  Documents extends React.Component {
     this.setState({ isMenuOpen: !isMenuOpen });
   }
 
+  renderContent() {
+    const { documentTypes, activeDocumentType, documents } = this.state;
+    return (
+      <>
+      <div className={this.state.isMenuOpen ? `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_open}` : `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_closed}`}>
+        <button onClick={this.handleSideMenuOpenOrClose} className={sideMenuStyles.button}/>
+        <ul className={sideMenuStyles.list}>
+          {
+            documentTypes.map((item) => {
+              return (<SideMenuItem onItemClick={this.handleChangeDocType.bind(this, item.id)} key={item.id} content={item} isActive={item.id === activeDocumentType} />)
+            })
+          }
+        </ul>
+      </div>
+      <DocumentsList key={activeDocumentType} list={documents} activeDocumentType={activeDocumentType} />
+      </>
+    )
+  }
+
   render() {
-    const { documentTypes, activeDocumentType } = this.state;
     return (
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>
@@ -79,18 +86,9 @@ class  Documents extends React.Component {
             {
               this.state.isFetching ?
               <p>Загрузка документов</p> :
+              this.renderContent()
+             }
             
-            <div className={this.state.isMenuOpen ? `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_open}` : `${sideMenuStyles.side_menu} ${sideMenuStyles.side_menu_closed}`}>
-              <button onClick={this.handleSideMenuOpenOrClose} className={sideMenuStyles.button}/>
-              <ul className={sideMenuStyles.list}>
-                {
-                  documentTypes.map((item) => {
-                    return (<SideMenuItem onItemClick={this.handleChangeDocType.bind(this, item)} key={item.type} content={item} isActive={item.type === activeDocumentType} />)
-                  })
-                }
-              </ul>
-            </div> }
-            <DocumentsList list={this.chooseDocumentType(activeDocumentType)} />
           </div>
         </section>
       </main>

@@ -7,7 +7,7 @@ class SideMenuItem extends React.Component {
   render() {
     return (
       <li onClick={this.props.onItemClick} className={this.props.isActive ? `${styles.item} ${styles.item_active}` : styles.item}>
-          {this.props.content.typeName}
+          {this.props.content.name}
       </li>
     )
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
 import mainBlockStyles from '../../CommonMainBlock/CommonMainBlock.module.css';
 import styles from './New.module.css';
@@ -38,9 +39,9 @@ class New extends React.Component {
               isFetching ?
               <p>ЗАГРУЗКА ДАННЫХ...</p> :
               <div className={styles.container}>
+                <Link to="/news" onClick={this.props.onBackClick} className={styles.arrow}>&larr; Назад к списку</Link>
                 {content.image ? <img className={styles.image} alt={content.title} src={content.image}/> : null }
                 <div className={styles.textContent}>
-                  {/* <p onClick={this.props.onBackClick}>&larr; Назад к списку</p> */}
                   <h2 className={styles.title}>{content.title}</h2>
                   <p className={styles.date}>{this.props.dateConverter(content.date_publisher)}</p>
                   {

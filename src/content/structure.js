@@ -28,6 +28,19 @@ const structure = [
         position: 'Главный бухгалтер',
         phoneNumber: '+7 (8512) 66-74-56',
         image: kushenkova,
+      }
+    ]
+  },
+  {
+    id: '1',
+    name: 'Отдел документационного обеспечения',
+    employees: [
+      {
+        id: '105',
+        name: 'Карелина-Симсон Юлиана Олеговна',
+        position: 'Начальник отдела',
+        phoneNumber: '+7 (8512) 66-74-62',
+        image: null,
       },
       {
         id: '104',
@@ -37,24 +50,10 @@ const structure = [
         image: null,
       },
       {
-        id: '105',
-        name: 'Карелина-Симсон Юлиана Олеговна',
-        position: 'Специалист отдела кадров',
-        phoneNumber: '+7 (8512) 66-74-62',
-        image: null,
-      },
-      {
         id: '106',
         name: 'Порунцова Галина Александровна',
         position: 'Делопроизводитель',
         phoneNumber: '+7 (8512) 66-74-60',
-        image: null,
-      },
-      {
-        id: '107',
-        name: 'Попов Андрей Юрьевич',
-        position: 'Системный администратор',
-        phoneNumber: null,
         image: null,
       },
     ]
@@ -192,6 +191,13 @@ const structure = [
         name: 'Носков Никита Юрьевич',
         position: 'Оператор баз данных',
         phoneNumber: '+7 (8512) 66-74-59',
+        image: null,
+      },
+      {
+        id: '107',
+        name: 'Попов Андрей Юрьевич',
+        position: 'Системный администратор',
+        phoneNumber: null,
         image: null,
       },
     ]

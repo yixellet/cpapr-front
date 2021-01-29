@@ -28,7 +28,8 @@ const menu = {
         {id: 33, name: 'Мониторинг пассажирского транспорта', link: 'glonass', sub: null},
         {id: 34, name: 'Геодезия и картография', link: 'survey', sub: null},
         {id: 35, name: 'Землеустроительные и кадастровые работы', link: 'cadaster', sub: null},
-        {id: 36, name: 'Образовательные проекты', link: 'education', sub: null},
+        {id: 36, name: 'Изготовление картографической продукции', link: 'mapping', sub: null},
+        {id: 37, name: 'Образовательные проекты', link: 'education', sub: null},
       ]
     },
     {
