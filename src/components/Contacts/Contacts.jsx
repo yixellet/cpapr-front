@@ -4,6 +4,9 @@ import PageTitle from '../PageTitle/PageTitle';
 import mainBlockStyles from '../CommonMainBlock/CommonMainBlock.module.css';
 import styles from './Contacts.module.css';
 
+import astrobl_logo from '../../images/logo_astrobl.png';
+import minprom_logo from '../../images/logo_minprom.png';
+
 class Contacts extends React.Component {
   render() {
     return (
@@ -68,6 +71,8 @@ class Contacts extends React.Component {
             </tr>
           </tbody>
         </table>
+        <a href='https://astrobl.ru' target="_blank" rel="noreferrer noopener"><img className={styles.external_link} src={astrobl_logo} alt='Логотип сайта Астраханской области' /></a>
+        <a href='https://minprom.astrobl.ru' target="_blank" rel="noreferrer noopener"><img className={styles.external_link} src={minprom_logo} alt='Логотип сайта Министерства промышленности Астраханской области' /></a>
         </section>
       </main>
     )

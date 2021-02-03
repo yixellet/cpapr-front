@@ -25,7 +25,8 @@ class News extends React.Component {
       news: {},
       results: [],
       isFetching: true,
-      currentPage: sessionStorage.getItem('currentPage') && 1,
+      currentPage: this.props.currentPage,
+      scrollY: this.props.scrollY,
       newItemForDelete: null,
       titleItemForDelete: null,
       newItemForEdit: null,
@@ -55,11 +56,10 @@ class News extends React.Component {
     this.handleOpenAddImagePopup = this.handleOpenAddImagePopup.bind(this);
     this.handleCloseAddImageDeletePopup = this.handleCloseAddImageDeletePopup.bind(this);
     this.handleAddImage = this.handleAddImage.bind(this);
-    this.handleClickOnLink = this.handleClickOnLink.bind(this);
   }
 
   componentDidMount() {
-    const { currentPage } = this.state;
+    const { currentPage, scrollY } = this.state;
     this.setState({isFetching: true})
     this.props.api.getNews(10, currentPage)
       .then((data) => {
@@ -75,6 +75,7 @@ class News extends React.Component {
           error
         })
       })
+    window.scrollTo(scrollY[0], scrollY[1]);
   }
 
   setCurrentPage(pageq) {
@@ -262,11 +263,6 @@ class News extends React.Component {
       })
   }
 
-  handleClickOnLink() {
-    sessionStorage.setItem('currentPage', this.state.currentPage);
-    sessionStorage.setItem('scroll', window.scrollY);
-  }
-
   render() {
     const { 
       news, 
@@ -274,6 +270,7 @@ class News extends React.Component {
       isFetching, 
       error, 
       currentPage, 
+      scrollY,
       confirmPopupType, 
       titleItemForDelete,
       newItemForEdit,
@@ -296,7 +293,9 @@ class News extends React.Component {
           onAddImageButtonClick={this.handleOpenAddImagePopup}
           newsArray={results} 
           isAdmin={this.props.isAdmin}
-          onLinkClick={this.handleClickOnLink} />
+          curp={currentPage}
+          scroll={scrollY}
+          onLinkClick={this.props.handleClickOnLink} />
         <Paginator 
           onPageChange={this.setCurrentPage} 
           data={news} 

@@ -9,7 +9,7 @@ class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(new Error(this.errorMessages.SERVER_ERROR));
+    return Promise.reject(new Error(res.status));
   }
 
   signin(username, password) {
@@ -116,6 +116,15 @@ class Api {
       body: data
     })
     .then((res) => this.parseResponse(res))
+  }
+
+  getStructure() {
+    return fetch(`${this.baseUrl}/structure/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }})
+      .then(this.parseResponse)
   }
 }
 

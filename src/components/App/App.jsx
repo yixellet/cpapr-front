@@ -26,14 +26,23 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      // isAdmin: true,
       isAdmin: localStorage.getItem('access'),
+      currentPage: 1,
+      scrollY: [0, 0],
     }
     this.checkIsAdmin = this.checkIsAdmin.bind(this);
+    this.handleClickOnLink = this.handleClickOnLink.bind(this);
   }
 
   checkIsAdmin() {
     this.setState({ isAdmin: localStorage.getItem('access') })
+  }
+
+  handleClickOnLink(page, scroll) {
+    this.setState({
+      currentPage: page,
+      scrollY: scroll,
+    })
   }
 
   render() {
@@ -45,7 +54,7 @@ class App extends React.Component {
             <Main api={api} dateConverter={extractFullDate} mainPageContent={mainPageContent} />
           </Route>
           <Route exact path="/news/">
-            <News api={api} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
+            <News handleClickOnLink={this.handleClickOnLink} key={this.state.currentPage} currentPage={this.state.currentPage} scrollY={this.state.scrollY} api={api} pagesize={NEWS_PAGESIZE} isAdmin={this.state.isAdmin} />
           </Route>
           <Route path="/news/:id/">
             <New dateConverter={extractFullDate} api={api} />
@@ -60,12 +69,12 @@ class App extends React.Component {
             <Contacts />
           </Route>
           <Route path="/about">
-            <About blockList={menu.menu[5].sub}/>
+            <About api={api} blockList={menu.menu[5].sub}/>
           </Route>
-          <Route exact path="/administration">
+          <Route exact path="/administrationcpapr">
             <SignIn api={api} onSignIn={this.checkIsAdmin} />
           </Route>
-          <Route exact path="/404">
+          <Route path="*">
             <PageNotFound />
           </Route>
         </Switch>

@@ -8,12 +8,15 @@ import placeHolder from '../../../images/placeholder.png';
 class NewsItem extends React.Component {
 
   cutText(text, maxSymbols) {
-    const subString = text.substr(0, maxSymbols);
-    for (let i = subString.length; i > 0; i--) {
-      if (subString[i] === " ") {
-        return text.substr(0,i) + '...';
+    if (text.length > maxSymbols) {
+      const subString = text.substr(0, maxSymbols);
+      for (let i = subString.length; i > 0; i--) {
+        if (subString[i] === " ") {
+          return text.substr(0,i) + '...';
+        }
       }
-    }
+    };
+    return text;
   }
 
   render() {

@@ -11,8 +11,8 @@ class Department extends React.Component {
         {this.props.data.name ? <h3 className={styles.name}>{this.props.data.name}</h3> : ''}
         <ul className={styles.employeeList}>
           {
-            this.props.data.employees.map((employee) => {
-              return (<Employee key={employee.id} name={employee.name} image={employee.image} position={employee.position} phoneNumber={employee.phoneNumber}/>)
+            this.props.data.department.map((employee) => {
+              return (<Employee key={employee.id} name={employee.name} image={employee.image} position={employee.position} phoneNumber={employee.phone_number}/>)
             })
           }
         </ul>

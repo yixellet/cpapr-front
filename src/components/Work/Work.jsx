@@ -7,6 +7,7 @@ import Rfpd from './Rfpd/Rfpd';
 import Glonass from './Glonass/Glonass';
 import Survey from './Survey/Survey';
 import Cadaster from './Cadaster/Cadaster';
+import Mapping from './Mapping/Mapping';
 import Education from './Education/Education';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
@@ -35,6 +36,9 @@ function Work(props) {
         </Route>
         <Route exact path={`${path}/cadaster`}>
           <Cadaster />
+        </Route>
+        <Route exact path={`${path}/mapping`}>
+          <Mapping />
         </Route>
         <Route exact path={`${path}/education`}>
           <Education />

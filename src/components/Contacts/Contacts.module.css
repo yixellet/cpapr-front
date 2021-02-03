@@ -58,6 +58,13 @@
   line-height: 1.5;
 }
 
+.external_link {
+  width: 300px;
+  margin-right: 30px;
+  background-color: #fff;
+  box-shadow: 2px 2px 10px rgb(143, 170, 201);
+}
+
 @media screen and (max-width: 768px) {
   .map {
     height: 300px;
@@ -73,6 +80,10 @@
 
   .table__accent {
     margin-bottom: 16px;
+  }
+
+  .external_link {
+    margin-bottom: 20px;
   }
 }
 

@@ -22,7 +22,7 @@ function About(props) {
             <History />
           </Route>
           <Route path={`${path}/structure`}>
-            <Structure structure={structureData} />
+            <Structure api={props.api} structure={structureData} />
           </Route>
         </div>
       </section>

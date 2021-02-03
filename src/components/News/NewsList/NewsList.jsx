@@ -20,7 +20,7 @@ class NewsList extends React.Component {
             onDeleteButtonClick={() => this.props.onDeleteButtonClick(item.id, item.title)}
             onDeleteImageButtonClick={() => this.props.onDeleteImageButtonClick(item.id, item.image)} 
             onAddImageButtonClick={() => this.props.onAddImageButtonClick(item.id)}
-            onLinkClick={this.props.onLinkClick} />
+            onLinkClick={() => this.props.onLinkClick(this.props.curp, [this.props.scroll[0], this.props.scroll[1]])} />
         })}
       </ul>
     )
