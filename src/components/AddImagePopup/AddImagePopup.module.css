@@ -1,0 +1,82 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.445);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.container_opened {
+  display: flex;
+}
+
+.popup {
+  width: 500px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #252525;
+  position: relative;
+  padding: 20px;
+}
+
+.close_button {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background-color: #551414;
+  background-image: url('../../images/close.svg');
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #272727;
+  transition: background-color 300ms ease;
+}
+
+.close_button:hover {
+  background-color: #b14747;
+  background-image: url('../../images/close_hover.svg');
+}
+
+.button {
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  margin-right: 10px;
+}
+
+.delete_button {
+  background-color: #551414;
+}
+
+.delete_button:hover {
+  background-color: #b14747;
+}
+
+.cancel_button {
+  background-color: #07141c;
+}
+
+.cancel_button:hover {
+    background-color: #11374e;
+}
+
+.input {
+  margin-bottom: 30px;
+}

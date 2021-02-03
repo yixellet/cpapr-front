@@ -1,0 +1,37 @@
+.pageTitle {
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 754px;
+}
+
+@media screen and (max-width: 1050px) {
+    .pageTitle {
+        margin-left: 117px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .pageTitle {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .pageTitle {
+        font-size: 27px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .pageTitle {
+        margin-bottom: 20px;
+        font-size: 25px;
+    }
+}

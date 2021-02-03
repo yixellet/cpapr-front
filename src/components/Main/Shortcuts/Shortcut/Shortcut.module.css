@@ -1,0 +1,109 @@
+.shortcut {
+  width: calc((100% - 30px)/2);
+  height: 200px;
+  list-style-type: none;
+  margin-bottom: 30px;
+  z-index: 2;
+}
+
+.shortcut__link {
+  background-color: rgb(50,117,146);
+  background-position: center;
+  background-size: contain;
+  text-decoration: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  position: relative;
+  border-radius: 10px;
+  transition: background-color 300ms ease;
+}
+
+.shortcut__link:hover {
+  background-color: rgb(91, 140, 161);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.shortcut__text {
+  margin: 25px;
+  color:#ffffff;
+  font-family: "Roboto Condensed";
+  font-size: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: normal;
+  z-index: 5;
+}
+
+@media screen and (max-width: calc(1146px + 30px)) {
+  .shortcut {
+    width: calc((100% - 20px)/2);
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 954px) {
+  .shortcut {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 758px) {
+  .shortcut {
+    height: 120px;
+  }
+
+  .shortcut__text {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .shortcut {
+    width: calc((100% - 15px) / 2);
+  }
+
+  .shortcut__link {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .shortcut__text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 442px) {
+  .shortcut {
+    width: calc((100% - 10px) / 2);
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .shortcut {
+    height: 80px;
+  }
+
+  .shortcut__text {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .shortcut__text {
+    font-size: 16px;
+  }
+}

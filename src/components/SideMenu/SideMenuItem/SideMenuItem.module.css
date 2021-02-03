@@ -1,0 +1,18 @@
+.item {
+  margin-bottom: 20px;
+  font-family: Roboto;
+  line-height: 1.5;
+  text-decoration: none;
+  color: #0A5992;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.item_active {
+  font-weight: 700;
+}
+
+.item:hover {
+  color: rgb(97, 179, 238);
+}

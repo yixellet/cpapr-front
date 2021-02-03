@@ -1,0 +1,8 @@
+.body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 80px;
+  width: 100%;
+  position: relative;
+}
