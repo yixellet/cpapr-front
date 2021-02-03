@@ -1,5 +1,5 @@
 const BASE_URL_HOME = "http://localhost:4000";
-const BASE_URL_WORK = "http://172.17.13.254/api/v1";
+const BASE_URL_WORK = "http://172.17.13.254/kJ99cyRZFk";
 const NEWS_URL = "http://localhost:4000/news";
 const DOCS_URL = "http://localhost:4000/docs";
 const NEWS_PAGESIZE = 10;

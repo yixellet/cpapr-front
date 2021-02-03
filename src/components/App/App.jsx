@@ -71,10 +71,10 @@ class App extends React.Component {
           <Route path="/about">
             <About api={api} blockList={menu.menu[5].sub}/>
           </Route>
-          <Route exact path="/administration">
+          <Route exact path="/administrationcpapr">
             <SignIn api={api} onSignIn={this.checkIsAdmin} />
           </Route>
-          <Route exact path="/404">
+          <Route path="*">
             <PageNotFound />
           </Route>
         </Switch>

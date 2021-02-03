@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: calc(870px + 60px)) {
-  .image, .textContent {
+  .textContent {
     width: 100%;
   }
 
@@ -71,5 +71,8 @@
 @media screen and (max-width: 768px) {
   .container {
     margin-top: 0px;
+  }
+  .image {
+    width: auto;
   }
 }
