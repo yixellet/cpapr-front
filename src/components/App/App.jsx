@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -62,12 +62,14 @@ class App extends React.Component {
           <Route exact path="/docs">
             <Documents api={api} />
           </Route>
+          <Redirect exact from="/work" to="/work/databases" />
           <Route path="/work">
             <Work blockList={menu.menu[3].sub}/>
           </Route>
           <Route exact path="/contacts">
             <Contacts />
           </Route>
+          <Redirect exact from="/about" to="/about/history" />
           <Route path="/about">
             <About api={api} blockList={menu.menu[5].sub}/>
           </Route>

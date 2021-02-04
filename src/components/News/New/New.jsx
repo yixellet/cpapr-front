@@ -16,6 +16,8 @@ class New extends React.Component {
       error: null,
       text: [],
     }
+    this.makeURL = this.makeURL.bind(this);
+    this.findURL = this.findURL.bind(this);
   }
 
   componentDidMount() {
@@ -36,8 +38,17 @@ class New extends React.Component {
       })
   }
 
+  makeURL(string) {
+    return (<a href={string} target="_blank" rel="noreferrer noopener">{string}</a>)
+  }
+
+  findURL(paragraph) {
+  }
+
   render() {
     const { content, isFetching, text, error } = this.state;
+    const t = <p className={styles.text}>Some text <a href="www.ya.ru">some link</a> and mor text!</p>
+    console.log(t)
     return (
       <main className={mainBlockStyles.background}>
         <section className={mainBlockStyles.content}>
