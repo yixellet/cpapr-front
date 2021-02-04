@@ -66,7 +66,12 @@ class EditPopup extends React.Component {
                 <textarea minLength='10' className={styles.input_title} name="title" type="text" onChange={this.handleInputChange} />
               </div>
             </div>
-            <label className={styles.label}>Текст</label>
+            <label className={styles.label} htmlFor="text">Текст</label>
+            <ul className={styles.toolbar}>
+              <li className={styles.toolbar_item}><button className={`${styles.button} ${styles.button_bold}`}>Ж</button></li>
+              <li className={styles.toolbar_item}><button className={`${styles.button} ${styles.button_italic}`}>К</button></li>
+              <li className={styles.toolbar_item}><button className={`${styles.button} ${styles.button_list}`} /></li>
+            </ul>
             <textarea minLength='10' className={styles.textarea} name="text" type="text" rows="4" onChange={this.handleInputChange} />
             <div className={styles.submit_error_block}>
               <input className={styles.submit} name="submit" type="submit" value="Применить" />

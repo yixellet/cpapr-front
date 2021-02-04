@@ -14,6 +14,7 @@ class Glonass extends React.Component {
         по таким направлениям как транспортное обеспечение населения, 
         передвижение школьных автобусов, перевозка опасных грузов, служба скорой помощи, 
         МЧС, ЖКХ и ведомственный автотранспорт Правительства Астраханской области.</p>
+        <a target="_blank" rel="noreferrer noopener" className={styles.link} href="https://aoglonass30.ru">https://aoglonass30.ru</a>
       </div>
     )
   }
